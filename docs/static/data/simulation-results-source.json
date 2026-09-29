@@ -1,0 +1,18 @@
+{
+  "source_document": "ALTER_ICRA_2027.pdf",
+  "sha256": "0805c77346548ce51e830eb814550b0675c46f3a423a42359b274a18449a8c41",
+  "pdf_page": 6,
+  "tables": [
+    "I: coordination success",
+    "II: source-task success"
+  ],
+  "dataset": "simulation-results.csv",
+  "units": "percent",
+  "notes": [
+    "Transcribed from the supplied final manuscript; cross-checked against the two-arm rows in RESULTS.md.",
+    "Combined source success is the mean of place-return and wipe success, each evaluated on 100 episodes. Coordination uses 200 episodes.",
+    "One selected checkpoint per method and budget. No across-seed uncertainty estimates are provided or plotted.",
+    "Adaptation demonstration budgets exclude base-policy pretraining. FT-multi uses zero distilled source demonstrations.",
+    "The frozen base Table II row (97.0% combined source success) is not plotted as an adapted method."
+  ]
+}

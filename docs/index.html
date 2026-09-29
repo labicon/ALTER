@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ALTER | Coordination on Demand</title>
+  <meta name="description" content="ALTER adapts pretrained single-arm diffusion policies for decentralized multi-agent coordination using limited collaborative demonstrations and policy-distilled replay.">
+  <meta name="theme-color" content="#2463da">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ALTER: Residual Denoising Enables Sample-Efficient Multi-Agent Coordination on Demand">
+  <meta property="og:description" content="Adapt pretrained single-arm diffusion policies for decentralized multi-agent coordination while retaining source-task behavior.">
+  <meta property="og:url" content="https://iconlab.negarmehr.com/ALTER/">
+  <link rel="canonical" href="https://iconlab.negarmehr.com/ALTER/">
+  <meta name="twitter:card" content="summary">
+  <meta name="citation_title" content="Residual Denoising Enables Sample-Efficient Multi-Agent Coordination on Demand">
+  <meta name="citation_author" content="Dayi Dong">
+  <meta name="citation_author" content="Maulik Bhatt">
+  <meta name="citation_author" content="Aayushi Shrivastava">
+  <meta name="citation_author" content="Lasse Peters">
+  <meta name="citation_author" content="Negar Mehr">
+  <link rel="icon" href="static/images/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/alter.css">
+  <script defer src="static/js/media.js"></script>
+  <script defer src="static/js/alter.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header container">
+    <a class="lab-link" href="https://iconlab.negarmehr.com/" aria-label="ICON Lab home">
+      <img src="static/images/icon-lab.png" width="808" height="152" alt="ICON — Intelligent Control Lab">
+    </a>
+    <span class="berkeley">UC Berkeley</span>
+  </header>
+
+  <nav class="section-nav" aria-label="Project sections">
+    <div class="container section-nav-inner">
+      <a href="#abstract">Overview</a>
+      <a href="#method">Method</a>
+      <a href="#results">Results</a>
+      <a href="#hardware">Hardware</a>
+      <a href="#comparisons">Failures</a>
+      <a href="#citation">Citation</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="hero container" aria-labelledby="project-title">
+      <p class="project-name" aria-hidden="true">ALTER</p>
+      <h1 id="project-title"><span class="sr-only">ALTER: </span>Residual Denoising Enables Sample-Efficient<br class="desktop-break"> Multi-Agent Coordination on Demand</h1>
+      <p class="authors"><span class="author">Dayi Dong</span>, <span class="author">Maulik Bhatt</span>, <span class="author">Aayushi Shrivastava</span>, <span class="author">Lasse Peters</span>, <span class="author">Negar Mehr</span></p>
+      <p class="affiliation">University of California, Berkeley</p>
+      <div class="resource-links" aria-label="Project resources">
+        <a class="button" href="static/papers/ALTER.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i><span>Paper</span></a>
+        <a class="button" href="https://arxiv.org/abs/2609.32129" target="_blank" rel="noopener"><i class="ai ai-arxiv" aria-hidden="true"></i><span>arXiv</span></a>
+      </div>
+      <figure class="teaser" id="overview-video">
+        <div class="media-slot presentation" data-media="presentation" role="img" aria-label="ALTER presentation video">
+          <div class="placeholder-content"><a href="videos/presentation.mp4">Watch the ALTER presentation</a></div>
+        </div>
+        <figcaption>Coordination on demand with single-agent skill retention.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section container narrow" id="abstract" aria-labelledby="abstract-title">
+      <h2 id="abstract-title">Overview</h2>
+      <p class="acronym"><strong>ALTER</strong>: <strong>A</strong>daptation from <strong>L</strong>imited demonstrations for <strong>T</strong>eam coordination with <strong>E</strong>xisting-skill <strong>R</strong>etention.</p>
+      <aside class="key-takeaways" aria-label="At a glance">
+        <article>
+          <h3>Decentralized execution</h3>
+          <p>Each robot acts on its own visual observations, without explicit inter-agent communication.</p>
+        </article>
+        <article>
+          <h3>Limited demonstrations</h3>
+          <p>Adapt pretrained single-arm diffusion policies with limited collaborative data.</p>
+        </article>
+        <article>
+          <h3>Source-skill retention</h3>
+          <p>Use policy-distilled replay to retain independent single-arm behavior.</p>
+        </article>
+      </aside>
+      <p>We adapt pretrained single-arm diffusion policies to multi-agent tasks using limited collaborative demonstrations, without access to the original training data. The adapted policy coordinates when deployed in a team while retaining the ability to act independently. Execution is decentralized: each robot acts only on its own visual observations, without explicit inter-agent communication.</p>
+    </section>
+
+    <section class="section container" id="method" aria-labelledby="method-title">
+      <h2 id="method-title">Residual coordination adapter</h2>
+      <figure>
+        <div class="media-slot diagram" data-media="overview" role="img" aria-label="ALTER overview figure">
+          <div class="placeholder-content"><a href="pictures/overview.pdf">View the ALTER overview figure</a></div>
+        </div>
+        <figcaption>We freeze the pretrained base policy and jointly train a residual coordination adapter on multi-agent demonstrations and policy-distilled single-arm replay.</figcaption>
+      </figure>
+      <math class="equation" display="block" aria-label="Adapted denoiser D phi equals frozen base denoiser D base plus trainable residual delta phi">
+        <msub><mi>D</mi><mi>ϕ</mi></msub><mo>=</mo><msub class="base-color"><mi>D</mi><mtext>base</mtext></msub><mo>+</mo><msub class="head-color"><mi>Δ</mi><mi>ϕ</mi></msub>
+      </math>
+      <div class="method-captions">
+        <p><strong class="base-color">Frozen base policy</strong>Keep the pretrained denoiser fixed during adaptation.</p>
+        <p><strong class="head-color">Residual adaptation</strong>Learn corrections for multi-agent coordination.</p>
+        <p><strong>Policy-distilled replay</strong>Retain source-task behavior using rollouts of the frozen policy.</p>
+      </div>
+      <details class="technical-details">
+        <summary>Technical details</summary>
+        <div class="details-content">
+          <figure class="architecture-figure">
+            <div class="media-slot diagram" data-media="architecture" role="img" aria-label="Frozen base and residual coordination head architecture"><div class="placeholder-content"><a href="pictures/architecture.png">View the architecture diagram</a></div></div>
+            <figcaption>The residual coordination adapter corrects the frozen base prediction at every denoising step.</figcaption>
+          </figure>
+          <p><strong>Residual denoising.</strong> The adapter receives the noised action chunk, noise level, local observation, and base prediction. Its visual conditioning combines frozen base-encoder features with a lightweight convolutional network. We zero-initialize its output pathway, so adaptation starts from the base policy.</p>
+          <p><strong>Training objective.</strong> We jointly train the adapter on collaborative demonstrations and policy-distilled replay. The coordination loss applies denoising regression to the adapted denoiser; the replay loss penalizes the residual on source-task inputs:</p>
+          <math class="equation" display="block" aria-label="Loss equals coordination loss plus lambda retention times replay loss">
+            <mi>ℒ</mi><mo>=</mo><msub><mi>ℒ</mi><mtext>coord</mtext></msub><mo>+</mo><msub><mi>λ</mi><mtext>ret</mtext></msub><msub><mi>ℒ</mi><mtext>replay</mtext></msub>
+          </math>
+          <p>The retention weight <var>λ<sub>ret</sub></var> trades coordination gain against source-task retention. A zero residual recovers the base policy; gradients update only the adapter.</p>
+          <p><strong>Decentralized deployment.</strong> Each robot runs a copy of the same adapted policy using only its own RGB images. The adapter remains active on both source and collaborative tasks. Robots exchange no information and receive no external signal indicating whether a partner is present.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="section container" id="results" aria-labelledby="results-title">
+      <h2 id="results-title">Two-arm coordination and source-task retention</h2>
+      <p class="section-intro">In TwoArmPlaceWipe, one robot moves a tray to a waiting area while the other wipes the dirt beneath it. The robots must complete the wipe before returning the tray, and return the sponge to its pad.</p>
+
+      <figure class="setup-figure">
+        <div class="media-slot diagram" data-media="simulationSetup" role="img" aria-label="TwoArmPlaceWipe setup with local robot camera views"><div class="placeholder-content"><a href="pictures/simulation-setup.pdf">View the simulation setup</a></div></div>
+        <figcaption>Each robot uses only its own shoulder-camera RGB images.</figcaption>
+      </figure>
+      <h3 class="gallery-heading">Multi-agent coordination</h3>
+      <div class="coordination-demo">
+        <figure>
+          <div class="media-slot" data-media="simulation" role="img" aria-label="ALTER · coordinated tray removal, wiping, and return"><div class="placeholder-content"><span class="placeholder-title">ALTER · coordinated tray removal, wiping, and return</span></div></div>
+          <figcaption>ALTER · coordinated tray removal, wiping, and return</figcaption>
+        </figure>
+      </div>
+      <h3 class="gallery-heading">Source-task retention</h3>
+      <div class="media-grid source-gallery">
+        <figure>
+          <div class="media-slot" data-media="source" role="img" aria-label="Place-and-return · example 1"><div class="placeholder-content"><span class="placeholder-title">Place-and-return · example 1</span></div></div>
+          <figcaption>Place-and-return · example 1</figcaption>
+        </figure>
+        <figure>
+          <div class="media-slot" data-media="source2" role="img" aria-label="Place-and-return · example 2"><div class="placeholder-content"><span class="placeholder-title">Place-and-return · example 2</span></div></div>
+          <figcaption>Place-and-return · example 2</figcaption>
+        </figure>
+        <figure>
+          <div class="media-slot" data-media="source3" role="img" aria-label="Wipe-and-return"><div class="placeholder-content"><span class="placeholder-title">Wipe-and-return</span></div></div>
+          <figcaption>Wipe-and-return</figcaption>
+        </figure>
+      </div>
+      <p class="experiment-note">The adapted policy retains place-and-return and wipe-and-return behaviors with the coordination head active.</p>
+      <figure class="results-figure">
+        <div class="media-slot diagram" data-media="results" role="img" aria-label="Coordination and source-skill retention from manuscript Tables I and II">
+          <div class="placeholder-content"><a href="pictures/results.png">View the numerical results chart</a></div>
+        </div>
+        <figcaption>
+          <span class="caption-line">Adaptation budgets pair <strong>20 / 20, 40 / 40, or 60 / 60 multi-agent / distilled single-arm demonstrations</strong> for ALTER, FS, and FT-mixed. FT-multi uses the same multi-agent counts and <strong>zero single-arm demonstrations</strong>.</span>
+          <span class="caption-line">Combined source success averages place-and-return and wipe-and-return success. <a href="static/papers/ALTER.pdf">Tables I–II</a>.</span>
+          <span class="caption-links"><a href="static/data/simulation-results.csv">Download data</a> · <a href="pictures/results.pdf">Figure PDF</a></span>
+        </figcaption>
+      </figure>
+      <p class="results-caption">ALTER achieves the highest reported coordination success at each budget while retaining <strong>97.0–97.5% combined source success</strong>. With <strong>40 multi-agent and 40 distilled single-arm demonstrations</strong>, ALTER achieves 71.5% coordination success, exceeding FT-mixed (63.5%) and FS (59.0%) with 60 demonstrations of each type.</p>
+    </section>
+
+    <section class="section container" id="hardware" aria-labelledby="hardware-title">
+      <h2 id="hardware-title">Hardware experiments</h2>
+      <p class="section-intro">Two xArm7 robots coordinate to place a plush bird inside a lidded box. One robot removes the lid, the other places the bird, and the first replaces the lid. Each robot uses its own shoulder-view RGB camera.</p>
+      <figure class="setup-figure">
+        <div class="media-slot diagram" data-media="hardwareSetup" role="img" aria-label="Two xArm7 robots, box, lid, bird, and local camera views"><div class="placeholder-content"><a href="pictures/hardware-setup.pdf">View the hardware setup</a></div></div>
+        <figcaption>Hardware setup and local visual observations.</figcaption>
+      </figure>
+      <h3 class="gallery-heading">Multi-agent coordination</h3>
+      <div class="coordination-demo">
+        <figure>
+          <div class="media-slot" data-media="hardware" role="img" aria-label="ALTER · open, place, close"><div class="placeholder-content"><span class="placeholder-title">ALTER · open, place, close</span></div></div>
+          <figcaption>ALTER · open, place, close</figcaption>
+        </figure>
+      </div>
+      <h3 class="gallery-heading">Source-task retention</h3>
+      <div class="media-grid source-gallery">
+        <figure>
+          <div class="media-slot" data-media="hardwareSource2" role="img" aria-label="Lid removal"><div class="placeholder-content"><span class="placeholder-title">Lid removal</span></div></div>
+          <figcaption>Lid removal</figcaption>
+        </figure>
+        <figure>
+          <div class="media-slot" data-media="hardwareSource" role="img" aria-label="Bird pick-and-place"><div class="placeholder-content"><span class="placeholder-title">Bird pick-and-place</span></div></div>
+          <figcaption>Bird pick-and-place</figcaption>
+        </figure>
+        <figure>
+          <div class="media-slot" data-media="hardwareSource3" role="img" aria-label="Lid replacement"><div class="placeholder-content"><span class="placeholder-title">Lid replacement</span></div></div>
+          <figcaption>Lid replacement</figcaption>
+        </figure>
+      </div>
+      <p class="results-caption">ALTER and FT-mixed each succeed in <strong>18/20 coordination trials</strong>, compared with 13/20 for FS. Across the three source tasks, ALTER succeeds in <strong>59/60 trials</strong>, compared with 47/60 for FT-mixed and 40/60 for FS.</p>
+      <p class="experiment-note">Each method uses 69 multi-agent and 68 policy-distilled single-arm demonstrations. Source success combines 20 trials each of lid removal, lid replacement, and bird pick-and-place. <a href="static/papers/ALTER.pdf">Table IV</a>.</p>
+    </section>
+
+    <section class="section container" id="comparisons" aria-labelledby="comparisons-title">
+      <h2 id="comparisons-title">Failures and near misses</h2>
+      <p class="section-intro">Selected FT-mixed and FS trials illustrate failures and successful trials with nearly missed grasps or placements.</p>
+      <div class="media-grid"><figure><div class="media-slot" data-media="ftFailure" role="img" aria-label="FT-mixed · failure"><div class="placeholder-content"><span class="placeholder-title">FT-mixed · failure</span></div></div><figcaption>FT-mixed · failure</figcaption></figure><figure><div class="media-slot" data-media="fsFailure" role="img" aria-label="FS · failure"><div class="placeholder-content"><span class="placeholder-title">FS · failure</span></div></div><figcaption>FS · failure</figcaption></figure><figure><div class="media-slot" data-media="fsNearMiss" role="img" aria-label="FS · success with near-missed grab"><div class="placeholder-content"><span class="placeholder-title">FS · success with near-missed grab</span></div></div><figcaption>FS · success with near-missed grab</figcaption></figure><figure><div class="media-slot" data-media="ftNearMiss" role="img" aria-label="FT-mixed · success with near-missed placement"><div class="placeholder-content"><span class="placeholder-title">FT-mixed · success with near-missed placement</span></div></div><figcaption>FT-mixed · success with near-missed placement</figcaption></figure></div>
+      <p class="experiment-note">These qualitative examples are separate from the aggregate success rates in Table IV.</p>
+    </section>
+    <section class="section container narrow citation" id="citation" aria-labelledby="citation-title">
+      <h2 id="citation-title">Citation</h2>
+      <p>If you find ALTER useful in your research, please cite:</p>
+      <pre><code>@article{dong2026alter,
+  title={Residual Denoising Enables Sample-Efficient Multi-Agent Coordination on Demand},
+  author={Dong, Dayi and Bhatt, Maulik and Shrivastava, Aayushi and Peters, Lasse and Mehr, Negar},
+  journal={arXiv preprint arXiv:2609.32129},
+  year={2026},
+  url={https://arxiv.org/abs/2609.32129}
+}</code></pre>
+    </section>
+  </main>
+
+  <footer class="site-footer container"><a href="https://iconlab.negarmehr.com/">Intelligent Control Lab</a><span aria-hidden="true"> · </span>UC Berkeley</footer>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# GitHub Pages source: main branch, /docs. Research documentation lives in
+# /documentation; exclude only the website authoring guides here.
+title: ALTER
+description: Residual Denoising Enables Sample-Efficient Multi-Agent Coordination on Demand
+exclude:
+  - README.md
+  - pictures/README.md
+  - videos/README.md
