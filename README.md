@@ -34,3 +34,14 @@ If you find ALTER useful in your research, please cite:
   url={https://arxiv.org/abs/2609.32129}
 }
 ```
+
+## Code release preparation
+
+The code is staged for review; artifact publication and licensing are pending.
+Start with [installation](documentation/release/installation.md),
+[artifact integrity/downloads](documentation/release/artifacts.md),
+[simulation workflows](documentation/release/simulation.md), and
+[hardware preparation](documentation/release/hardware.md).
+[Licensing review](documentation/release/licensing.md) and
+[Hugging Face publication](documentation/release/huggingface.md) describe the
+remaining release decisions. Local smoke tests do not reproduce the paper tables.
