@@ -148,6 +148,25 @@
         </figure>
       </div>
       <p class="experiment-note">The adapted policy retains place-and-return and wipe-and-return behaviors with the coordination head active.</p>
+      <aside class="baseline-comparison" aria-labelledby="baselines-title">
+        <h3 id="baselines-title">What are the baselines?</h3>
+        <p>We compare ALTER with three ways to train a diffusion policy for coordination. All methods act on each robot’s own shoulder-camera RGB images, with decentralized execution.</p>
+        <dl class="baseline-list">
+          <div>
+            <dt>FS <span>From scratch</span></dt>
+            <dd>Train a new policy using the same collaborative demonstrations and policy-distilled single-arm rollouts as ALTER. Its total parameter count closely matches ALTER’s base policy plus adapter. This tests the benefit of reusing pretrained skills.</dd>
+          </div>
+          <div>
+            <dt>FT-mixed <span>Fine-tuning with mixed data</span></dt>
+            <dd>Update all weights of the pretrained single-arm policy using both collaborative demonstrations and policy-distilled single-arm rollouts. This tests direct fine-tuning against ALTER’s frozen base and trainable residual adapter.</dd>
+          </div>
+          <div>
+            <dt>FT-multi <span>Fine-tuning with multi-agent data only</span></dt>
+            <dd>Update all weights of the same pretrained policy using only collaborative demonstrations. Comparing it with FT-mixed tests the role of single-arm replay in retaining existing skills.</dd>
+          </div>
+        </dl>
+        <p class="baseline-note">Neither fine-tuning baseline adds a coordination adapter. Single-arm replay comes from rollouts of the pretrained policy; the original pretraining data is not used during adaptation. Hardware experiments compare ALTER with FS and FT-mixed. <a href="static/papers/ALTER.pdf">Paper, Sections VI-B and VII-A</a>.</p>
+      </aside>
       <figure class="results-figure">
         <div class="media-slot diagram" data-media="results" role="img" aria-label="Coordination and source-skill retention from manuscript Tables I and II">
           <div class="placeholder-content"><a href="pictures/results.png">View the numerical results chart</a></div>
