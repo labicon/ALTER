@@ -18,7 +18,7 @@ distilled from the base policy itself.
 ## Website
 
 The project website is published from [`docs/`](docs/). The website and supporting
-media are preserved alongside the research code in this release branch.
+media are preserved alongside the research code in this repository.
 
 ## Citation
 
@@ -36,7 +36,7 @@ If you find ALTER useful in your research, please cite:
 
 ## Simulation code release
 
-The simulation code is available on this release branch. Simulation checkpoints and data
+The simulation code is available on the public repository’s `main` branch. Simulation checkpoints and data
 are public at [ALTER-models](https://huggingface.co/Berkeley-ICON-Lab/ALTER-models)
 and [ALTER-data](https://huggingface.co/datasets/Berkeley-ICON-Lab/ALTER-data).
 Original code/checkpoints use Apache-2.0; original datasets use CC BY 4.0.

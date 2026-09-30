@@ -11,15 +11,17 @@ namespaces, the 400-demonstration base selection, nested 5/10/15-per-mode
 adaptation membership, grouping and order. Do not regenerate selection from
 relocated filenames: the historical selection ranks included absolute paths.
 
-Download selected bundles with:
+Download all four bundles for the materialization command below:
 
 ```bash
 python scripts/download_release.py --manifest release/manifest.json \
-  --bundles simulation-models simulation-adaptation-data simulation-provenance \
+  --bundles simulation-models simulation-pretraining-data \
+  simulation-adaptation-data simulation-provenance \
   --destination /path/to/ALTER-artifacts
 ```
 
-Add `simulation-pretraining-data` for base-policy training. Each bundle must name
+For file inspection only, `--bundles` can select a subset. Materialization currently
+requires all four bundles, including pretraining data. Each bundle must name
 a full 40-character Hub commit. Files are verified with full SHA-256 checksums;
 valid existing files are reused and conflicts are rejected. The destination
 cannot contain symlink path components. `--local-source /path/to/reviewed-bundles`
