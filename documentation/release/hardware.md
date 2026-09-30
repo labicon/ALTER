@@ -87,6 +87,45 @@ manifest), and the matching `--reference-stats`. FT-mixed additionally requires
 statistics. From-scratch runs omit these initialization options. Use the NumPy
 compatibility wrapper above when loading the recovered statistics under NumPy 1.26.
 
+## Portable bundle staging
+
+Hardware bundles are prepared locally; they are not yet downloadable from the
+Hub. The existing downloader accepts their staging manifest with `--local-source`.
+Remote downloads remain disabled until immutable Hub revisions are recorded.
+
+For a verified local bundle root, materialize model metadata without downloading
+training data:
+
+```bash
+python scripts/materialize_hardware_release.py \
+  --bundle-root /path/to/downloaded-hardware-bundles \
+  --output "$PWD/public-validation/hardware-local" \
+  --bundles hardware-models
+python scripts/validate_hardware_models.py \
+  --root "$PWD/public-validation/hardware-local/hardware" \
+  --output "$PWD/public-validation/hardware-models.json"
+```
+
+Add `hardware-training-data` to the materializer's bundle list for adaptation
+training, and `hardware-demonstrations-data` for the selected source demonstrations
+and replay. Download those bundles first. Use a fresh output directory for each
+materialization. Cache files remain in the verified download tree; JSON/pickle
+metadata and weights are independently materialized. Unselected data references
+remain `artifact://` URIs, making a model-only export unsuitable for training
+until the corresponding data bundle is downloaded and materialized.
+
+High/low manifests are under `hardware/manifests/`. Record membership, order and
+scientific fields are unchanged; original provenance hashes remain in metadata
+and export receipts. `provenance://sha256/` values denote historical references
+not shipped, not filesystem paths. In particular, the exact historical
+fine-tuning base-statistics file is unavailable; use the explicitly verified
+selected base/statistics pair for functional checks without asserting byte identity
+to that historical file.
+
+The [model card](../../release/hardware-model-card-draft.md) and
+[data card](../../release/hardware-dataset-card-draft.md) describe contents and
+limitations. Hardware license scope and publication approval remain pending.
+
 ## External hardware setup
 
 Physical robot operation uses the separate general robot-control project
