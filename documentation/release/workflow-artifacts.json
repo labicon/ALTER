@@ -1,0 +1,288 @@
+[
+  {
+    "label": "Coord 5/mode",
+    "kind": "coord",
+    "budget_per_mode": 5,
+    "paper_coordination_percent": 35,
+    "paper_source_percent": 97,
+    "checkpoint": "data_primary/checkpoints/arm/placewipe_forwardonly_coord_all_expert_5permode_steps900000_seed0/mixed_coord_head_placewipe_step500000.pt",
+    "stats": "data_primary/checkpoints/arm/placewipe_forwardonly_coord_all_expert_5permode_steps900000_seed0/mixed_coord_head_placewipe_stats.pkl",
+    "coordination_records": [
+      "data_primary/results/placewipe_forwardonly_all_expert_full_confirmations/coord_best_and_runnerup/coord_5permode_step500000/twoarm/coord-shoulderonly_placewipe_resnet18_rf15/eval_20260808_041139.json"
+    ],
+    "source_records": [
+      "data_primary/results/placewipe_forwardonly_all_expert_full_confirmations/coord_best_and_runnerup/coord_5permode_step500000/singlearm/summary.tsv"
+    ]
+  },
+  {
+    "label": "FS 5/mode",
+    "kind": "fs",
+    "budget_per_mode": 5,
+    "paper_coordination_percent": 13.5,
+    "paper_source_percent": 32.5,
+    "checkpoint": "data_primary/checkpoints/arm/placewipe_forwardonly_fs_all_expert_5permode_steps900000_seed0/fromscratch_placewipe_step200000.pt",
+    "stats": "data_primary/checkpoints/arm/placewipe_forwardonly_fs_all_expert_5permode_steps900000_seed0/fromscratch_placewipe_stats.pkl",
+    "coordination_records": [
+      "data_primary/results/placewipe_forwardonly_all_expert_full_confirmations/fs/fs_step200000/twoarm/fromscratch-shoulderonly_placewipe_resnet18_rf15/eval_20260807_011937.json"
+    ],
+    "source_records": [
+      "data_primary/results/placewipe_forwardonly_all_expert_full_confirmations/fs/fs_step200000/singlearm/summary.tsv"
+    ]
+  },
+  {
+    "label": "FT-multi 5/mode",
+    "kind": "ft-multi",
+    "budget_per_mode": 5,
+    "paper_coordination_percent": 29.5,
+    "paper_source_percent": 20,
+    "checkpoint": "data_primary/checkpoints/arm/pure_full_policy_finetune_v2_20260911/twoarm_placewipe_multiarm_only_pure_full_policy_5permode_steps900000_seed0/twoarm_placewipe_multiarm_only_pure_full_policy_step200000.pt",
+    "stats": "data_primary/checkpoints/arm/pure_full_policy_finetune_v2_20260911/twoarm_placewipe_multiarm_only_pure_full_policy_5permode_steps900000_seed0/twoarm_placewipe_multiarm_only_pure_full_policy_step200000_stats.pkl",
+    "coordination_records": [
+      "data_campaigns/results/pure_full_policy_finetune_v2_20260911/evaluations/twoarm_placewipe-multiarm-only-5permode/full_selected_step200000/twoarm_full200/fromscratch-shoulderonly_placewipe_resnet18_rf15/eval_20260913_041031.json"
+    ],
+    "source_records": [
+      "data_campaigns/results/pure_full_policy_finetune_v2_20260911/evaluations/twoarm_placewipe-multiarm-only-5permode/full_selected_step200000/singlearm_preservation200/evaluation.json"
+    ]
+  },
+  {
+    "label": "Coord 10/mode",
+    "kind": "coord",
+    "budget_per_mode": 10,
+    "paper_coordination_percent": 71.5,
+    "paper_source_percent": 97.5,
+    "checkpoint": "data_primary/checkpoints/arm/placewipe_forwardonly_coord_all_expert_10permode_steps900000_seed0/mixed_coord_head_placewipe_step300000.pt",
+    "stats": "data_primary/checkpoints/arm/placewipe_forwardonly_coord_all_expert_10permode_steps900000_seed0/mixed_coord_head_placewipe_stats.pkl",
+    "coordination_records": [
+      "data_primary/results/placewipe_forwardonly_all_expert_full_confirmations/coord_best_and_runnerup/coord_10permode_step300000/twoarm/coord-shoulderonly_placewipe_resnet18_rf15/eval_20260808_041139.json"
+    ],
+    "source_records": [
+      "data_primary/results/placewipe_forwardonly_all_expert_full_confirmations/coord_best_and_runnerup/coord_10permode_step300000/singlearm/summary.tsv"
+    ]
+  },
+  {
+    "label": "FS 10/mode",
+    "kind": "fs",
+    "budget_per_mode": 10,
+    "paper_coordination_percent": 28,
+    "paper_source_percent": 44.5,
+    "checkpoint": "data_primary/checkpoints/arm/placewipe_forwardonly_fs_all_expert_10permode_steps900000_seed0/fromscratch_placewipe_step900000.pt",
+    "stats": "data_primary/checkpoints/arm/placewipe_forwardonly_fs_all_expert_10permode_steps900000_seed0/fromscratch_placewipe_stats.pkl",
+    "coordination_records": [
+      "data_primary/results/placewipe_forwardonly_all_expert_full_confirmations/fs/fs_step900000/twoarm/fromscratch-shoulderonly_placewipe_resnet18_rf15/eval_20260807_011937.json"
+    ],
+    "source_records": [
+      "data_primary/results/placewipe_forwardonly_all_expert_full_confirmations/fs/fs_step900000/singlearm/summary.tsv"
+    ]
+  },
+  {
+    "label": "FT-multi 10/mode",
+    "kind": "ft-multi",
+    "budget_per_mode": 10,
+    "paper_coordination_percent": 50.5,
+    "paper_source_percent": 34,
+    "checkpoint": "data_primary/checkpoints/arm/pure_full_policy_finetune_v2_20260911/twoarm_placewipe_multiarm_only_pure_full_policy_10permode_steps900000_seed0/twoarm_placewipe_multiarm_only_pure_full_policy_step300000.pt",
+    "stats": "data_primary/checkpoints/arm/pure_full_policy_finetune_v2_20260911/twoarm_placewipe_multiarm_only_pure_full_policy_10permode_steps900000_seed0/twoarm_placewipe_multiarm_only_pure_full_policy_step300000_stats.pkl",
+    "coordination_records": [
+      "data_campaigns/results/pure_full_policy_finetune_v2_20260911/evaluations/twoarm_placewipe-multiarm-only-10permode/full_selected_step300000/twoarm_full200/fromscratch-shoulderonly_placewipe_resnet18_rf15/eval_20260913_041032.json"
+    ],
+    "source_records": [
+      "data_campaigns/results/pure_full_policy_finetune_v2_20260911/evaluations/twoarm_placewipe-multiarm-only-10permode/full_selected_step300000/singlearm_preservation200/evaluation.json"
+    ]
+  },
+  {
+    "label": "Coord 15/mode",
+    "kind": "coord",
+    "budget_per_mode": 15,
+    "paper_coordination_percent": 87,
+    "paper_source_percent": 97,
+    "checkpoint": "data_primary/checkpoints/arm/placewipe_forwardonly_coord_all_expert_15permode_steps900000_seed0/mixed_coord_head_placewipe_step500000.pt",
+    "stats": "data_primary/checkpoints/arm/placewipe_forwardonly_coord_all_expert_15permode_steps900000_seed0/mixed_coord_head_placewipe_stats.pkl",
+    "coordination_records": [
+      "data_primary/results/placewipe_forwardonly_all_expert_full_confirmations/coord_best_and_runnerup/coord_15permode_step500000/twoarm/coord-shoulderonly_placewipe_resnet18_rf15/eval_20260808_041139.json"
+    ],
+    "source_records": [
+      "data_primary/results/placewipe_forwardonly_all_expert_full_confirmations/coord_best_and_runnerup/coord_15permode_step500000/singlearm/summary.tsv"
+    ]
+  },
+  {
+    "label": "FS 15/mode",
+    "kind": "fs",
+    "budget_per_mode": 15,
+    "paper_coordination_percent": 59,
+    "paper_source_percent": 61,
+    "checkpoint": "data_primary/checkpoints/arm/placewipe_forwardonly_fs_all_expert_15permode_steps900000_seed0/fromscratch_placewipe_step400000.pt",
+    "stats": "data_primary/checkpoints/arm/placewipe_forwardonly_fs_all_expert_15permode_steps900000_seed0/fromscratch_placewipe_stats.pkl",
+    "coordination_records": [
+      "data_primary/results/placewipe_forwardonly_all_expert_full_confirmations/fs/fs_step400000/twoarm/fromscratch-shoulderonly_placewipe_resnet18_rf15/eval_20260807_011937.json"
+    ],
+    "source_records": [
+      "data_primary/results/placewipe_forwardonly_all_expert_full_confirmations/fs/fs_step400000/singlearm/summary.tsv"
+    ]
+  },
+  {
+    "label": "FT-multi 15/mode",
+    "kind": "ft-multi",
+    "budget_per_mode": 15,
+    "paper_coordination_percent": 58.5,
+    "paper_source_percent": 25,
+    "checkpoint": "data_primary/checkpoints/arm/pure_full_policy_finetune_v2_20260911/twoarm_placewipe_multiarm_only_pure_full_policy_15permode_steps900000_seed0/twoarm_placewipe_multiarm_only_pure_full_policy_step200000.pt",
+    "stats": "data_primary/checkpoints/arm/pure_full_policy_finetune_v2_20260911/twoarm_placewipe_multiarm_only_pure_full_policy_15permode_steps900000_seed0/twoarm_placewipe_multiarm_only_pure_full_policy_step200000_stats.pkl",
+    "coordination_records": [
+      "data_campaigns/results/pure_full_policy_finetune_v2_20260911/evaluations/twoarm_placewipe-multiarm-only-15permode/full_selected_step200000/twoarm_full200/fromscratch-shoulderonly_placewipe_resnet18_rf15/eval_20260913_080408.json"
+    ],
+    "source_records": [
+      "data_campaigns/results/pure_full_policy_finetune_v2_20260911/evaluations/twoarm_placewipe-multiarm-only-15permode/full_selected_step200000/singlearm_preservation200/evaluation.json"
+    ]
+  },
+  {
+    "label": "Capacity XS Coord",
+    "kind": "capacity-coord",
+    "budget_per_mode": 5,
+    "paper_coordination_percent": 25,
+    "paper_source_percent": 97,
+    "checkpoint": "data_primary/checkpoints/arm/twoarm_forwardonly_capacity_ablation_20260912_coord_wd1e4_control/twoarm_forwardonly_capacity_coord_xs_5permode_steps900000_seed0/twoarm_forwardonly_capacity_coord_xs_step100000.pt",
+    "stats": "data_primary/checkpoints/arm/twoarm_forwardonly_capacity_ablation_20260912_coord_wd1e4_control/twoarm_forwardonly_capacity_coord_xs_5permode_steps900000_seed0/twoarm_forwardonly_capacity_coord_xs_stats.pkl",
+    "coordination_records": [
+      "data_primary/results/twoarm_forwardonly_capacity_ablation/20260912_coord_wd1e4_control/evaluations/capacity-xs-coord/provisional_full_20260913/step100000/twoarm_full200/coord-shoulderonly_placewipe_resnet18_rf15/eval_20260913_173445.json"
+    ],
+    "source_records": [
+      "data_primary/results/twoarm_forwardonly_capacity_ablation/20260912_coord_wd1e4_control/evaluations/capacity-xs-coord/provisional_full_20260913/step100000/native_source_retention200/evaluation.json"
+    ]
+  },
+  {
+    "label": "Capacity S Coord",
+    "kind": "capacity-coord",
+    "budget_per_mode": 5,
+    "paper_coordination_percent": 27,
+    "paper_source_percent": 97,
+    "checkpoint": "data_primary/checkpoints/arm/twoarm_forwardonly_capacity_ablation_20260912_coord_wd1e4_control/twoarm_forwardonly_capacity_coord_s_5permode_steps900000_seed0/twoarm_forwardonly_capacity_coord_s_step100000.pt",
+    "stats": "data_primary/checkpoints/arm/twoarm_forwardonly_capacity_ablation_20260912_coord_wd1e4_control/twoarm_forwardonly_capacity_coord_s_5permode_steps900000_seed0/twoarm_forwardonly_capacity_coord_s_stats.pkl",
+    "coordination_records": [
+      "data_primary/results/twoarm_forwardonly_capacity_ablation/20260912_coord_wd1e4_control/evaluations/capacity-s-coord/provisional_full_20260913/step100000/twoarm_full200/coord-shoulderonly_placewipe_resnet18_rf15/eval_20260913_173446.json"
+    ],
+    "source_records": [
+      "data_primary/results/twoarm_forwardonly_capacity_ablation/20260912_coord_wd1e4_control/evaluations/capacity-s-coord/provisional_full_20260913/step100000/native_source_retention200/evaluation.json"
+    ]
+  },
+  {
+    "label": "Capacity M Coord",
+    "kind": "capacity-coord",
+    "budget_per_mode": 5,
+    "paper_coordination_percent": 33.5,
+    "paper_source_percent": 97,
+    "checkpoint": "data_primary/checkpoints/arm/twoarm_forwardonly_capacity_ablation_20260912_coord_wd1e4_control/twoarm_forwardonly_capacity_coord_m_5permode_steps900000_seed0/twoarm_forwardonly_capacity_coord_m_step200000.pt",
+    "stats": "data_primary/checkpoints/arm/twoarm_forwardonly_capacity_ablation_20260912_coord_wd1e4_control/twoarm_forwardonly_capacity_coord_m_5permode_steps900000_seed0/twoarm_forwardonly_capacity_coord_m_stats.pkl",
+    "coordination_records": [
+      "data_primary/results/twoarm_forwardonly_capacity_ablation/20260912_coord_wd1e4_control/evaluations/capacity-m-coord/provisional_full_20260913/step200000/twoarm_full200/coord-shoulderonly_placewipe_resnet18_rf15/eval_20260913_173448.json"
+    ],
+    "source_records": [
+      "data_primary/results/twoarm_forwardonly_capacity_ablation/20260912_coord_wd1e4_control/evaluations/capacity-m-coord/provisional_full_20260913/step200000/native_source_retention200/evaluation.json"
+    ]
+  },
+  {
+    "label": "Capacity XS FS",
+    "kind": "capacity-fs",
+    "budget_per_mode": 5,
+    "paper_coordination_percent": 12,
+    "paper_source_percent": 34.5,
+    "checkpoint": "data_primary/checkpoints/arm/twoarm_forwardonly_capacity_ablation_20260909_attempt2/twoarm_forwardonly_capacity_fs_xs_5permode_steps900000_seed0/twoarm_forwardonly_capacity_fs_xs_step100000.pt",
+    "stats": "data_primary/checkpoints/arm/twoarm_forwardonly_capacity_ablation_20260909_attempt2/twoarm_forwardonly_capacity_fs_xs_5permode_steps900000_seed0/twoarm_forwardonly_capacity_fs_xs_stats.pkl",
+    "coordination_records": [
+      "data_primary/results/twoarm_forwardonly_capacity_ablation/20260909_xs_recovery_attempt2/evaluations/capacity-xs-fs/earlystop_full_validation_selected_horizon1800/step100000_20260911/fromscratch-shoulderonly_placewipe_resnet18_rf15/eval_20260911_173644.json"
+    ],
+    "source_records": [
+      "data_primary/results/twoarm_forwardonly_capacity_ablation/20260909_xs_recovery_attempt2/evaluations/capacity-xs-fs/native_source_retention200/step100000_20260911/evaluation.json"
+    ]
+  },
+  {
+    "label": "Capacity S FS",
+    "kind": "capacity-fs",
+    "budget_per_mode": 5,
+    "paper_coordination_percent": 10,
+    "paper_source_percent": 37.5,
+    "checkpoint": "data_primary/checkpoints/arm/twoarm_forwardonly_capacity_ablation_20260909_attempt2/twoarm_forwardonly_capacity_fs_s_5permode_steps900000_seed0/twoarm_forwardonly_capacity_fs_s_step300000.pt",
+    "stats": "data_primary/checkpoints/arm/twoarm_forwardonly_capacity_ablation_20260909_attempt2/twoarm_forwardonly_capacity_fs_s_5permode_steps900000_seed0/twoarm_forwardonly_capacity_fs_s_stats.pkl",
+    "coordination_records": [
+      "data_primary/results/twoarm_forwardonly_capacity_ablation/20260909_xs_recovery_attempt2/evaluations/capacity-s-fs/full_horizon1800/step300000_20260911/fromscratch-shoulderonly_placewipe_resnet18_rf15/eval_20260911_173645.json"
+    ],
+    "source_records": [
+      "data_primary/results/twoarm_forwardonly_capacity_ablation/20260909_xs_recovery_attempt2/evaluations/capacity-s-fs/native_source_retention200/step300000_20260911/evaluation.json"
+    ]
+  },
+  {
+    "label": "Capacity M FS",
+    "kind": "capacity-fs",
+    "budget_per_mode": 5,
+    "paper_coordination_percent": 10.5,
+    "paper_source_percent": 39.5,
+    "checkpoint": "data_primary/checkpoints/arm/twoarm_forwardonly_capacity_ablation_20260909_attempt2/twoarm_forwardonly_capacity_fs_m_5permode_steps900000_seed0/twoarm_forwardonly_capacity_fs_m_step400000.pt",
+    "stats": "data_primary/checkpoints/arm/twoarm_forwardonly_capacity_ablation_20260909_attempt2/twoarm_forwardonly_capacity_fs_m_5permode_steps900000_seed0/twoarm_forwardonly_capacity_fs_m_stats.pkl",
+    "coordination_records": [
+      "data_primary/results/twoarm_forwardonly_capacity_ablation/20260909_xs_recovery_attempt2/evaluations/capacity-m-fs/full_horizon1800/step400000_20260911/fromscratch-shoulderonly_placewipe_resnet18_rf15/eval_20260911_173643.json"
+    ],
+    "source_records": [
+      "data_primary/results/twoarm_forwardonly_capacity_ablation/20260909_xs_recovery_attempt2/evaluations/capacity-m-fs/native_source_retention200/step400000_20260911/evaluation.json"
+    ]
+  },
+  {
+    "label": "Frozen forward-only base",
+    "kind": "base",
+    "budget_per_mode": null,
+    "paper_coordination_percent": null,
+    "paper_source_percent": 97,
+    "checkpoint": "data_primary/checkpoints/arm/singlearm_placewipe_e2e_shoulderonly_hard_big_smalltable_spongein_returnsettle_forwardonly_noaugment_100permode/singlearm_mixedfront_e2e_shoulder_final.pt",
+    "stats": "data_primary/checkpoints/arm/singlearm_placewipe_e2e_shoulderonly_hard_big_smalltable_spongein_returnsettle_forwardonly_noaugment_100permode/singlearm_mixedfront_e2e_shoulder_stats.pkl",
+    "coordination_records": [],
+    "source_records": [
+      "data_primary/results/placewipe_current_forwardonly_frozen_base_native_source200_seed1000_1049_rf15/evaluation.json"
+    ]
+  },
+  {
+    "label": "FT-mixed 5/mode",
+    "kind": "ft-mixed",
+    "budget_per_mode": 5,
+    "selected_step": 200000,
+    "checkpoint": "data_primary/checkpoints/pure_full_policy_twoarm/twoarm_placewipe_pure_finetune_5permode_steps900000_seed0/twoarm_placewipe_pure_finetune_step200000.pt",
+    "stats": "data_primary/checkpoints/pure_full_policy_twoarm/twoarm_placewipe_pure_finetune_5permode_steps900000_seed0/twoarm_placewipe_pure_finetune_step200000_stats.pkl",
+    "paper_coordination_percent": 33.0,
+    "paper_source_percent": 46.0,
+    "coordination_records": [
+      "data_primary/results/pure_full_policy_20260908/full_evaluations/twoarm_placewipe-pure-finetune-5permode/selected_step200000/twoarm_full200/fromscratch-shoulderonly_placewipe_resnet18_rf15/eval_20260909_155604.json"
+    ],
+    "source_records": [
+      "data_primary/results/pure_full_policy_20260908/full_evaluations/twoarm_placewipe-pure-finetune-5permode/selected_step200000/singlearm_preservation/evaluation.json"
+    ]
+  },
+  {
+    "label": "FT-mixed 10/mode",
+    "kind": "ft-mixed",
+    "budget_per_mode": 10,
+    "selected_step": 400000,
+    "checkpoint": "data_primary/checkpoints/pure_full_policy_twoarm/twoarm_placewipe_pure_finetune_10permode_steps900000_seed0/twoarm_placewipe_pure_finetune_step400000.pt",
+    "stats": "data_primary/checkpoints/pure_full_policy_twoarm/twoarm_placewipe_pure_finetune_10permode_steps900000_seed0/twoarm_placewipe_pure_finetune_step400000_stats.pkl",
+    "paper_coordination_percent": 59.5,
+    "paper_source_percent": 82.5,
+    "coordination_records": [
+      "data_primary/results/pure_full_policy_20260908/full_evaluations/twoarm_placewipe-pure-finetune-10permode/selected_step400000/twoarm_full200/fromscratch-shoulderonly_placewipe_resnet18_rf15/eval_20260911_051909.json"
+    ],
+    "source_records": [
+      "data_primary/results/pure_full_policy_20260908/full_evaluations/twoarm_placewipe-pure-finetune-10permode/selected_step400000/singlearm_preservation/evaluation.json"
+    ]
+  },
+  {
+    "label": "FT-mixed 15/mode",
+    "kind": "ft-mixed",
+    "budget_per_mode": 15,
+    "selected_step": 500000,
+    "checkpoint": "data_primary/checkpoints/pure_full_policy_twoarm/twoarm_placewipe_pure_finetune_15permode_steps900000_seed0/twoarm_placewipe_pure_finetune_step500000.pt",
+    "stats": "data_primary/checkpoints/pure_full_policy_twoarm/twoarm_placewipe_pure_finetune_15permode_steps900000_seed0/twoarm_placewipe_pure_finetune_step500000_stats.pkl",
+    "paper_coordination_percent": 63.5,
+    "paper_source_percent": 82.5,
+    "coordination_records": [
+      "data_primary/results/pure_full_policy_20260908/full_evaluations/twoarm_placewipe-pure-finetune-15permode/selected_step500000/twoarm_full200/fromscratch-shoulderonly_placewipe_resnet18_rf15/eval_20260912_210425.json"
+    ],
+    "source_records": [
+      "data_primary/results/pure_full_policy_20260908/full_evaluations/twoarm_placewipe-pure-finetune-15permode/selected_step500000/singlearm_preservation/evaluation.json"
+    ]
+  }
+]

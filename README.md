@@ -17,9 +17,8 @@ distilled from the base policy itself.
 
 ## Website
 
-The project website is published from [`docs/`](docs/). This public repository
-currently contains the paper website and supporting media. The research code is
-being prepared separately for release.
+The project website is published from [`docs/`](docs/). The website and supporting
+media are preserved alongside the research code in this release branch.
 
 ## Citation
 
@@ -34,3 +33,19 @@ If you find ALTER useful in your research, please cite:
   url={https://arxiv.org/abs/2609.32129}
 }
 ```
+
+## Simulation code release
+
+The simulation code is available on this release branch. Simulation checkpoints and data
+are public at [ALTER-models](https://huggingface.co/Berkeley-ICON-Lab/ALTER-models)
+and [ALTER-data](https://huggingface.co/datasets/Berkeley-ICON-Lab/ALTER-data).
+Original code/checkpoints use Apache-2.0; original datasets use CC BY 4.0.
+See [LICENSE](LICENSE) and [NOTICE](NOTICE) for source scope. Hardware artifacts
+are deferred.
+Start with [installation](documentation/release/installation.md),
+[artifact integrity/downloads](documentation/release/artifacts.md),
+[simulation workflows](documentation/release/simulation.md), and
+[hardware preparation](documentation/release/hardware.md).
+[Licensing review](documentation/release/licensing.md) and
+[Hugging Face publication](documentation/release/huggingface.md) describe the
+release scope and verification. Local smoke tests do not reproduce the paper tables.

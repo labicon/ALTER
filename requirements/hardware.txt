@@ -1,0 +1,2 @@
+-r common.txt
+# ROS Humble, cv_bridge, xarm_msgs, camera/driver packages are external.
