@@ -1,8 +1,47 @@
 # Hardware preparation and offline validation
 
-The hardware profile covers current-frame inference and training. Hardware
-checkpoint/data recovery and real robot validation remain pending. Do not infer
-hardware success from mock tests or simulation results.
+The hardware profile covers current-frame inference and training. The recovered
+local archive contains the original 100k base and six documented 25k comparison
+models (H69, S69, FT_mixed, H30, S30, FT-mixed-30), plus their statistics and
+selected source data. These hardware artifacts have not been published to the
+Hub. Real robot validation remains pending; offline tests do not establish
+hardware success rates or identify the checkpoints used for scored paper trials.
+
+## Recovered artifact checks
+
+The archive contains 332 base-training and 32 validation records, 69 paired
+demonstrations, and 68 replay records. The low-data subset contains 30 pairs and
+30 replay records. Shared arm records refer to 501 unique data files. Base split
+membership and ordering match the saved base statistics. All 574 archive files
+passed inventory, size and SHA-256 checks.
+
+In the separate Python 3.10 hardware environment, validate the recovered archive:
+
+```bash
+python scripts/validate_hardware_models.py --root /path/to/hardware \
+  --output "$PWD/public-validation/hardware-models.json"
+```
+
+The validator uses the archive-relative model catalog and two saved camera
+frames. It enables process-local NumPy 2 pickle-name compatibility for NumPy
+1.26, without modifying datasets or the installed NumPy package. All seven
+model/statistics pairs passed CPU loading and 50-step anchored sampling. The
+14 fixed-input outputs matched an isolated archived source copy byte-for-byte
+in the same local environment. This is not a cross-version numerical guarantee.
+Only load trusted, checksum-verified pickle/PyTorch artifacts.
+
+## Training inputs still needed
+
+The archived source data are available, but the selected trainers consume prepared
+`images.npy` and `trajectory.npz` caches referenced by 206 manifest records.
+Those caches are absent, and some original raw recordings needed for exact
+reconstruction are absent too. Recover the matching caches and verify their
+recorded array hashes before claiming that the archive supports training.
+Do not substitute guessed timestamps, phases, eligibility or sampling weights.
+Original metadata contains private paths and must be sanitized in independent
+exports before artifact publication.
+
+## External hardware setup
 
 The inspected external dependency is
 [ICON_Arm](https://github.com/labicon/ICON_Arm), revision
