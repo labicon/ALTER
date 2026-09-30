@@ -19,6 +19,5 @@
   "anonymous_models_verified": 19,
   "download_validation_scope": "All selected model/provenance files and one demonstration from each data bundle downloaded. Remaining data copied from verified staging after all remote SHA-256 identities were checked.",
   "full_paper_reproduction_required": false,
-  "hardware_artifacts_included": false,
-  "git_push_performed": false
+  "hardware_artifacts_included": false
 }

@@ -34,9 +34,9 @@ If you find ALTER useful in your research, please cite:
 }
 ```
 
-## Code release preparation
+## Simulation code release
 
-The code is prepared on this release branch. Simulation checkpoints and data
+The simulation code is available on this release branch. Simulation checkpoints and data
 are public at [ALTER-models](https://huggingface.co/Berkeley-ICON-Lab/ALTER-models)
 and [ALTER-data](https://huggingface.co/datasets/Berkeley-ICON-Lab/ALTER-data).
 Original code/checkpoints use Apache-2.0; original datasets use CC BY 4.0.
