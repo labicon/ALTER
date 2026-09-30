@@ -1,0 +1,19 @@
+# Local configuration and isolated generated outputs
+.codiff.local.env
+.venv*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+release-artifacts/
+public-validation/
+checkpoints/
+results/
+logs/
+debug/
+wandb/
+*.pt
+*.pth
+*.pkl
+*.npz
+*.npy
+.env

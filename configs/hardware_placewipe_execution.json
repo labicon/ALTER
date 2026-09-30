@@ -1,0 +1,28 @@
+{
+  "_comment": [
+    "Single source of truth for physical execution settings on the two-arm",
+    "PlaceWipe port. Every physical rollout manifest must record these values.",
+    "Replan frequency is stated here explicitly because the simulator watcher",
+    "requests 15 while the two-arm branch of scripts/run_eval.py hard-codes 10;",
+    "hardware does not inherit that ambiguity."
+  ],
+  "schema": "hardware_placewipe_execution.v1",
+  "control_hz": 20,
+  "horizon": 20,
+  "replan_frequency": 15,
+  "denoising_steps": 50,
+  "cfg_w": 1.2,
+  "frame_offsets": [0],
+  "camera": {
+    "views": ["shoulder"],
+    "prescale_hw": [192, 256],
+    "model_input_hw": [128, 128],
+    "note": "Prescale to 192x256 then antialias to 128 to match training preprocessing."
+  },
+  "anchor_first_pose": true,
+  "action_space": {
+    "dim": 7,
+    "source": "commanded",
+    "note": "Denormalize with the frozen base stats before commanding."
+  }
+}
