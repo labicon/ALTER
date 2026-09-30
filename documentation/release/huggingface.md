@@ -1,28 +1,31 @@
-# Guided artifact publication (pending approval)
+# Published simulation artifacts
 
-No repository was created, no authentication was changed, and nothing was
-uploaded during local preparation. Suggested names are
-`Berkeley-ICON-Lab/ALTER-models` and `Berkeley-ICON-Lab/ALTER-data`; these names
-and the publishing account still need confirmation.
+Models: https://huggingface.co/Berkeley-ICON-Lab/ALTER-models (Apache-2.0).
+Data: https://huggingface.co/datasets/Berkeley-ICON-Lab/ALTER-data (CC BY 4.0).
+The author authorized public simulation upload. Hardware artifacts are deferred.
 
-1. Confirm the publishing account and organization membership.
-2. Approve the separate model/dataset names, contents, cards and licenses.
-3. After explicit authorization, create **private** staging repositories using
-   the [official repository guide](https://huggingface.co/docs/huggingface_hub/en/guides/repository).
-4. Authenticate locally, following [user access token guidance](https://huggingface.co/docs/hub/security-tokens).
-   Use narrowly scoped upload access. Never paste tokens into chat or put them
-   in Git. Do not reuse the legacy endpoint without verification.
-5. Upload only the reviewed export inventory and control manifests. Private
-   originals, migration scripts/logs, internal Git data and unsanitized records
-   must remain outside the upload set.
-6. Record immutable Hub commit IDs. Fill `repo_id`, `repo_type`, and `revision`
-   for every bundle in `release/manifest.json`, including the control-file hashes.
-7. Download into a fresh validation directory and check every checksum and
-   materialization result. Do not change existing published artifact versions.
-8. Obtain publication approval, make the intended repositories public, and test
-   anonymous access before publishing dependent code/download instructions.
+[release/manifest.json](../../release/manifest.json) pins the artifact commits.
+The Hub repositories also contain the same manifest, LICENSE, NOTICE, usage
+instructions, per-repository file inventories and SHA256SUMS. The manifest pins
+artifact commits that precede the final documentation commit, avoiding circular
+self-references. Original exported payload bytes and checksums are unchanged.
 
-The [model card](https://huggingface.co/docs/hub/model-cards) and
-[dataset card](https://huggingface.co/docs/hub/datasets-cards) should state the
-contents, verified identities, training/evaluation protocol, selection caveats,
-limitations and approved licenses. Draft card text is staged locally for review.
+All 706 payload/control files passed pre-upload checks. Anonymous remote file
+sizes and SHA-256 identities were checked across the complete inventory; small
+non-LFS files were downloaded to compute their hashes. All 19 selected model
+pairs, all provenance files and one demonstration from each data bundle were
+downloaded anonymously into an isolated directory. Remaining demonstrations were
+copied from the verified local exports for materialization testing, not claimed
+as a full network redownload. Existing valid downloads were reused successfully.
+
+All 19 downloaded policies passed finite inference, one CPU update and save/reload;
+coordination updates preserved the frozen base. Strict materialization and two-step
+coordination/source simulations passed. These functional checks do not establish
+paper success rates or reproduce complete training. Full paper reproduction is
+outside the agreed release validation scope.
+
+For future versions, stage locally, inspect metadata and content, use narrowly
+scoped local authentication, and upload only the reviewed inventory. Never put
+tokens in Git or chat. Retain prior artifact versions and update pinned revisions
+and checksums together. Test anonymous downloads before publishing dependent code.
+See the [official upload guide](https://huggingface.co/docs/huggingface_hub/en/guides/upload).

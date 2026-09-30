@@ -1,25 +1,25 @@
-# Licensing and attribution review
+# Licensing and attribution
 
-No project license has been selected. This staging branch is not approved for
-publication. A public repository alone does not establish redistribution rights.
-The authors/team must approve terms after confirming ownership and obligations.
+The author selected Apache-2.0 for original ALTER code and checkpoints, and
+CC BY 4.0 for original simulation demonstrations and replay datasets, and
+explicitly authorized public simulation artifact upload on 2026-09-30.
 
-| Material | Evidence and decision still needed |
+[LICENSE](../../LICENSE) and [NOTICE](../../NOTICE) identify the source scope.
+The standard texts are also available in [release/licenses](../../release/licenses/).
+The paper, website assets, logos and third-party components retain their own
+terms. The arXiv distribution license for the paper is unchanged. This technical
+release record does not assert a separately verified institutional approval or
+comprehensive legal clearance of upstream material.
+
+| Material | Release terms and attribution |
 | --- | --- |
-| ALTER source | Preserve the existing author attribution: Dayi Dong, Maulik Bhatt, Aayushi Shrivastava, Lasse Peters, Negar Mehr. Confirm contributor ownership and any upstream-derived implementations. No top-level source license was found. |
-| Policy checkpoints | Simulation state dictionaries include trained ResNet18 encoders. Confirm permission for weights and included metadata; encoder architecture imports torchvision. |
-| Demonstrations/replay | Confirm recording/simulator asset rights and permission to distribute demonstrations and policy-derived replay. Hardware files remain unavailable. |
-| Website/paper/media | Existing public website retained byte-for-byte. Existing publication is not proof of permission to relicense paper figures, clips or logos. |
-| ICON_Arm | Inspected package has a placeholder license; public availability and rights need confirmation. |
-| External dependencies | Installed separately, not vendored. Review installed package notices and exact versions before distribution of any environment or assets. |
+| Original ALTER source | Apache-2.0. Authors: Dayi Dong, Maulik Bhatt, Aayushi Shrivastava, Lasse Peters, Negar Mehr. Existing upstream notices remain applicable. |
+| Original simulation checkpoints | Apache-2.0. Selected ResNet18 encoder weights are included; the released encoder implementation constructs torchvision ResNet18 with weights=None. No separate DINO weight files are included. |
+| Original simulation demonstrations/replay and records | CC BY 4.0. Simulator software and standalone scene/robot asset packages are installed separately; their terms are not replaced. |
+| Website/paper/media | Retained unchanged; not relicensed by the code or artifact declarations. |
+| ICON_Arm and hardware | Deferred. The inspected package has a placeholder license; no hardware artifacts are published here. |
+| External dependencies | Installed separately, not bundled as an environment. Preserve their applicable notices and terms. |
 
-Apache-2.0 is a candidate for code: it includes a contributor patent grant and
-requires preserving relevant notices. MIT is a shorter permissive alternative.
-This is a proposed team choice, not a license declaration.
-[Apache terms](https://www.apache.org/licenses/LICENSE-2.0),
-[MIT terms](https://opensource.org/license/mit).
-Weights, datasets and media need explicit compatible terms of their own; do not
-apply the code choice to them automatically. Hugging Face cards should declare
-only approved terms, using its [license metadata](https://huggingface.co/docs/hub/repositories-licenses).
-
-The [installed dependency metadata inventory](../../release/dependency-license-inventory.json) records versions and available license notices. It is evidence for review, not a complete legal clearance of upstream-derived source or assets.
+The [installed dependency metadata inventory](../../release/dependency-license-inventory.json)
+records inspected versions and available license notices. It does not establish
+ownership or replace the licenses of those packages.

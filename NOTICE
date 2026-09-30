@@ -1,0 +1,8 @@
+ALTER: Residual Denoising Enables Sample-Efficient Multi-Agent Coordination on Demand
+Authors: Dayi Dong, Maulik Bhatt, Aayushi Shrivastava, Lasse Peters, Negar Mehr.
+
+The Apache-2.0 declaration covers original ALTER research source and release
+utilities. The paper, website and its media/logos, datasets, and third-party
+components are outside this source declaration. Original released simulation
+datasets use CC BY 4.0; see the dataset repository's license and notices.
+Existing third-party notices and terms remain applicable.

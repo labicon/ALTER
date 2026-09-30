@@ -1,11 +1,11 @@
 {
   "schema": "alter.release.v1",
-  "status": "private staging; not approved for upload; relocated provenance requires materialization",
+  "status": "Published simulation artifacts; portable metadata requires verified materialization; hardware deferred",
   "bundles": {
     "simulation-models": {
-      "repo_id": null,
+      "repo_id": "Berkeley-ICON-Lab/ALTER-models",
       "repo_type": "model",
-      "revision": null,
+      "revision": "535a90827656c7c748dcf486c312929fc05ef2e1",
       "files": [
         {
           "path": "data_primary/checkpoints/arm/singlearm_placewipe_e2e_shoulderonly_hard_big_smalltable_spongein_returnsettle_forwardonly_noaugment_100permode/singlearm_mixedfront_e2e_shoulder_final.pt",
@@ -355,9 +355,9 @@
       ]
     },
     "simulation-pretraining-data": {
-      "repo_id": null,
+      "repo_id": "Berkeley-ICON-Lab/ALTER-data",
       "repo_type": "dataset",
-      "revision": null,
+      "revision": "56916792549f0be32f9bfa31366da76886bc2c36",
       "files": [
         {
           "path": "data_primary/envs/arm/data_gen/rollouts/singlearm_place_return_hard_big_smalltable_spongein_returnsettle_100permode_forwardonly/demo_seed0_mode0.pkl",
@@ -2362,9 +2362,9 @@
       ]
     },
     "simulation-provenance": {
-      "repo_id": null,
+      "repo_id": "Berkeley-ICON-Lab/ALTER-data",
       "repo_type": "dataset",
-      "revision": null,
+      "revision": "56916792549f0be32f9bfa31366da76886bc2c36",
       "files": [
         {
           "path": "data_primary/checkpoints/arm/placewipe_forwardonly_coord_all_expert_5permode_steps900000_seed0/mixed_coord_head_placewipe_step500000.pt.contract.json",
@@ -2949,9 +2949,9 @@
       ]
     },
     "simulation-adaptation-data": {
-      "repo_id": null,
+      "repo_id": "Berkeley-ICON-Lab/ALTER-data",
       "repo_type": "dataset",
-      "revision": null,
+      "revision": "56916792549f0be32f9bfa31366da76886bc2c36",
       "files": [
         {
           "path": "data_primary/envs/arm/data_gen/rollouts/singlearm_place_return_hard_big_smalltable_spongein_forwardonly_policy_distill15/policy_seed8_mode0.pkl",

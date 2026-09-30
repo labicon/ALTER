@@ -1,0 +1,24 @@
+{
+  "schema": "alter.publication.v1",
+  "repositories": {
+    "model": {
+      "repo_id": "Berkeley-ICON-Lab/ALTER-models",
+      "artifact_revision": "535a90827656c7c748dcf486c312929fc05ef2e1",
+      "manifest_revision": "4e416cfd7b234cd2d9dd11356a336db2e0fd5c51",
+      "artifact_files": 69
+    },
+    "dataset": {
+      "repo_id": "Berkeley-ICON-Lab/ALTER-data",
+      "artifact_revision": "56916792549f0be32f9bfa31366da76886bc2c36",
+      "manifest_revision": "41bec5674ea3f3b8301bb4d7f2a6897a00dabc81",
+      "artifact_files": 637
+    }
+  },
+  "artifact_bytes": 87674268798,
+  "anonymous_inventory_files_verified": 706,
+  "anonymous_models_verified": 19,
+  "download_validation_scope": "All selected model/provenance files and one demonstration from each data bundle downloaded. Remaining data copied from verified staging after all remote SHA-256 identities were checked.",
+  "full_paper_reproduction_required": false,
+  "hardware_artifacts_included": false,
+  "git_push_performed": false
+}

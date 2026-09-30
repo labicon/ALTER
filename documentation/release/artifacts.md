@@ -1,8 +1,9 @@
 # Artifacts and integrity
 
-The release endpoint is not published. `release/manifest.json` is a staging
-inventory; its Hub repository IDs and immutable revisions must be approved and
-filled before network download works. Hardware artifacts are not staged.
+Simulation artifacts are public at [ALTER-models](https://huggingface.co/Berkeley-ICON-Lab/ALTER-models)
+and [ALTER-data](https://huggingface.co/datasets/Berkeley-ICON-Lab/ALTER-data).
+`release/manifest.json` pins immutable Hub revisions and all file checksums.
+Hardware artifacts are deferred.
 
 The selected simulation files are split into model, pretraining-data,
 adaptation-data, and provenance bundles. They preserve distinct storage
@@ -10,7 +11,7 @@ namespaces, the 400-demonstration base selection, nested 5/10/15-per-mode
 adaptation membership, grouping and order. Do not regenerate selection from
 relocated filenames: the historical selection ranks included absolute paths.
 
-After reviewed artifacts are published, download selected bundles with:
+Download selected bundles with:
 
 ```bash
 python scripts/download_release.py --manifest release/manifest.json \

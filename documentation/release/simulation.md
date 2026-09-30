@@ -46,7 +46,9 @@ strict contract errors or use a different similarly named checkpoint.
 These panels are full evaluations, not installation tests. Short functional
 checks are `python -m pytest -q` and launcher `--help`. A two-step simulator
 rollout is only a renderer/inference check; it cannot establish task success.
-Full paper retraining is substantially more work than these checks.
+Release acceptance uses loading, inference, one-step training and short simulation
+checks. Full paper retraining and full evaluation panels are not required for
+this release; their commands are provided for optional research use.
 
 The preserved checkpoint contracts contain original training commands. Prepare
 one in a fresh directory using a verified materialized checkpoint contract:
