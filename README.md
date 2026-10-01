@@ -32,7 +32,7 @@ and [hardware manifest](release/hardware-manifest.json). Physical operation stil
 private external robot-control package.
 
 Start with [installation](documentation/release/installation.md),
-[artifact integrity/downloads](documentation/release/artifacts.md),
+[simulation artifact downloads](documentation/release/artifacts.md),
 [simulation workflows](documentation/release/simulation.md), and
 [hardware preparation](documentation/release/hardware.md).
 [Licensing review](documentation/release/licensing.md) and

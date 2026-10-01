@@ -1,190 +1,75 @@
-# Hardware preparation and offline validation
+# Hardware guide
 
-The hardware profile covers current-frame inference and training. The recovered
-local archive contains the original 100k base and six 25k models (H69, S69,
-FT_mixed, H30, S30, FT-mixed-30), plus their statistics and selected source data.
-On 2026-09-30, the author confirmed that these six 25k checkpoints were used for
-the paper hardware results. These hardware artifacts are published under `hardware/v1/` in the
-[model](https://huggingface.co/Berkeley-ICON-Lab/ALTER-models/tree/main/hardware/v1) and
-[data](https://huggingface.co/datasets/Berkeley-ICON-Lab/ALTER-data/tree/main/hardware/v1) repositories. Real robot validation of the public port remains pending; offline tests
-do not establish hardware success rates.
+This guide is for using the released hardware checkpoints and prepared data
+offline. Physical robot operation requires the separate, private [ICON_Arm
+control project](https://github.com/labicon/ICON_Arm); this repository does not
+include the camera setup, robot services, or an installation path for live control.
 
-## Recovered artifact checks
+## Choose what to download
 
-The archive contains 332 base-training and 32 validation records, 69 paired
-demonstrations, and 68 replay records. The low-data subset contains 30 pairs and
-30 replay records. Shared arm records refer to 501 unique data files. Base split
-membership and ordering match the saved base statistics. All 574 archive files
-passed inventory, size and SHA-256 checks.
+The hardware artifacts use a separate manifest and live under `hardware/v1/` in
+the public [model repository](https://huggingface.co/Berkeley-ICON-Lab/ALTER-models/tree/main/hardware/v1)
+and [dataset repository](https://huggingface.co/datasets/Berkeley-ICON-Lab/ALTER-data/tree/main/hardware/v1).
 
-In the separate Python 3.10 hardware environment, validate the recovered archive:
+| What you need | Bundles |
+| --- | --- |
+| Load and evaluate released checkpoints offline | `hardware-models` |
+| Adapt a policy using the prepared training caches | `hardware-models hardware-training-data` |
+| Also inspect selected demonstrations and replay | Add `hardware-demonstrations-data` |
 
-```bash
-python scripts/validate_hardware_models.py --root /path/to/hardware \
-  --output "$PWD/public-validation/hardware-models.json"
-```
+## Download and prepare
 
-The validator uses the archive-relative model catalog and two saved camera
-frames. It enables process-local NumPy 2 pickle-name compatibility for NumPy
-1.26, without modifying datasets or the installed NumPy package. All seven
-model/statistics pairs passed CPU loading and 50-step anchored sampling. The
-14 fixed-input outputs matched an isolated archived source copy byte-for-byte
-in the same local environment. This is not a cross-version numerical guarantee.
-Only load trusted, checksum-verified pickle/PyTorch artifacts.
+Run commands from the repository root. Downloads are checked against the immutable
+revisions and SHA-256 checksums in [`release/hardware-manifest.json`](../../release/hardware-manifest.json).
+The downloader reuses valid files and rejects conflicting ones. Keep hardware and
+simulation downloads in separate directories.
 
-## Recovered training caches
-
-The separate prepared-cache supplement contains all 206 original cache directories.
-Its 774 files pass the pinned manifest, complete file-set, size and SHA-256 checks.
-All action, image and timestamp array hashes match the previously recorded
-training inputs. The high-data manifest has 206 records and the low-data manifest
-has 90 records drawn from the same cache pool. Relocation changes only cache
-paths, preserving record order and all other metadata.
-
-The public loader reproduces the sample counts, eligibility exclusions and
-sampling probabilities recorded in all six selected model statistics:
-
-| Manifest | Two-arm samples | Single-arm replay samples |
-| --- | ---: | ---: |
-| High | 93,164 | 44,224 |
-| Low | 37,319 | 19,921 |
-
-All six public training workflows passed short CPU checks on the recovered
-inputs: one update for each coordination head and five updates for each full
-policy, with batch size 2 and zero loader workers. Losses and gradients were
-finite; frozen-base and encoder/decoder update assertions passed. Each saved
-checkpoint reloaded and produced a finite 20-by-7 action sample. A one-update
-from-scratch check was too short to satisfy the existing encoder-update assertion
-because of zero-initialized decoder layers; the assertion was retained.
-These checks establish functional loading and training, not reproduced success rates.
-
-Private originals retain historical paths. Public metadata uses portable artifact
-references with original/export checksums; scientific fields are preserved. Prepared caches restore the
-selected training inputs without reconstructing missing raw recordings. The published
-bundles contain these exact prepared inputs and independently sanitized metadata.
-
-For an existing verified local archive, use a fresh output directory and explicit
-artifact paths. This one-step CPU check exercises coordination training with the
-recorded replay and augmentation settings; it is not a paper reproduction run:
-
-```bash
-HW=/path/to/hardware
-MANIFEST=/path/to/materialized/high.json
-BASE="$HW/checkpoints/joint_bird_cardboardfb_aug24fwd_aug16bwd_pruned_uw"
-python -m hardware_training.run_numpy_pickle_compat hardware_training.train_coordination_ab \
-  --manifest "$MANIFEST" --reference-stats "$HW/checkpoints/sep14_H69/mixed_coord_head_placewipe_hardware_stats.pkl" \
-  --base-checkpoint "$BASE/singlearm_mixedfront_e2e_shoulder_step100000.pt" \
-  --base-stats "$BASE/singlearm_mixedfront_e2e_shoulder_stats.pkl" \
-  --variant A --light-augmentation --grasp-transition-fraction 0 \
-  --device cpu --steps 1 --batch-size 2 --microbatch 2 --workers 0 --save-every 1 \
-  --output "$PWD/public-validation/hardware-H69"
-```
-
-The full-policy trainer also accepts `--device cpu` (default: `cuda`). For the
-selected full-policy runs, supply `--include-singlearm`,
-`--grasp-transition-fraction 0`, `--expected-episodes 69` (or `30` for the low
-manifest), and the matching `--reference-stats`. FT-mixed additionally requires
-`--init-checkpoint` and `--init-stats` pointing to the original base model and
-statistics. From-scratch runs omit these initialization options. Use the NumPy
-compatibility wrapper above when loading the recovered statistics under NumPy 1.26.
-
-## Download and materialize hardware v1
-
-The [hardware manifest](../../release/hardware-manifest.json) pins immutable Hub
-revisions, every payload checksum and the export receipts. Use a separate download
-directory from the simulation artifacts. Start with the model-only bundle:
+Download the model bundle:
 
 ```bash
 python scripts/download_release.py --manifest release/hardware-manifest.json \
   --bundles hardware-models --destination /path/to/ALTER-hardware-artifacts
 ```
 
-Add `hardware-training-data` for adaptation training caches, and
-`hardware-demonstrations-data` for selected source demonstrations and replay.
-The downloader reuses valid files and refuses conflicting ones.
-
-Materialize model metadata without requiring training data:
+To prepare an offline inference tree, materialize and validate it:
 
 ```bash
 python scripts/materialize_hardware_release.py \
   --bundle-root /path/to/ALTER-hardware-artifacts \
-  --output "$PWD/public-validation/hardware-local" \
-  --bundles hardware-models
+  --output "$PWD/public-validation/hardware-local" --bundles hardware-models
+
 python scripts/validate_hardware_models.py \
   --root "$PWD/public-validation/hardware-local/hardware" \
   --output "$PWD/public-validation/hardware-models.json"
 ```
 
-Add `hardware-training-data` to the materializer's bundle list for adaptation
-training, and `hardware-demonstrations-data` for the selected source demonstrations
-and replay. Download those bundles first. Use a fresh output directory for each
-materialization. Cache files remain in the verified download tree; JSON/pickle
-metadata and weights are independently materialized. Unselected data references
-remain `artifact://` URIs, making a model-only export unsuitable for training
-until the corresponding data bundle is downloaded and materialized.
+To prepare for training, also download `hardware-training-data`, then include it
+in both `--bundles` lists above. Add `hardware-demonstrations-data` to both lists
+if you need the selected source demonstrations and replay. Materialization needs
+each bundle you name to be downloaded first. Use a fresh output directory.
 
-High/low manifests are under `hardware/manifests/`. Record membership, order and
-scientific fields are unchanged; original provenance hashes remain in metadata
-and export receipts. `provenance://sha256/` values denote historical references
-not shipped, not filesystem paths. In particular, the exact historical
-fine-tuning base-statistics file is unavailable; use the explicitly verified
-selected base/statistics pair for functional checks without asserting byte identity
-to that historical file.
+The published model-only bundle supports offline model use. Training needs its
+matching prepared caches. The released caches restore selected training inputs;
+they do not reconstruct missing raw recordings.
 
-The [model card](../../release/hardware-model-card-draft.md) and
-[data card](../../release/hardware-dataset-card-draft.md) describe contents and
-limitations. Existing repository license files are unchanged by this addition.
+## Train and evaluate
 
-## External hardware setup
+Start with the [installation guide](installation.md) to create the hardware
+Python environment. The hardware entry points live in
+`hardware_training/`; use `--help` for each command’s required inputs and options.
+The selected workflows have passed short CPU training checks, but those checks
+do not reproduce the paper success rates. The release includes example prepared
+cache manifests under `hardware/manifests/`.
 
-Physical robot operation uses the separate general robot-control project
-[ICON_Arm](https://github.com/labicon/ICON_Arm), revision
-`bcd023f2700cdc67a58981dbf965c14d50dec544`. It documents Ubuntu 22.04 / ROS 2 Humble,
-the xArm ROS2 vendor `humble` branch, `xarm_msgs`, `cv_bridge`, and RealSense
-`realsense2_camera`. See its [bootstrap guide](https://github.com/labicon/ICON_Arm/blob/bcd023f2700cdc67a58981dbf965c14d50dec544/BOOTSTRAP.md).
-The author confirms that ICON_Arm is private and unavailable to external users.
-Its inspected `package.xml` declares `TODO: License declaration`; ALTER does not
-assign a license to this separate project. Exact deployed driver/camera commits
-were not available in this checkout. These gaps affect the physical robot setup; they do
-not block offline model validation. ICON_Arm remains an external dependency and
-is not bundled with ALTER or covered by its license. The current public release
-does not provide a complete installation path for physical robot operation.
-Do not replace those components with untested implementations.
+The released model/data cards and verification details are in
+[Hugging Face publication](huggingface.md#hardware-v1-verification). Offline
+validation does not run physical trials.
 
-The two arm profiles retain the names `bird` and `cardboard`. Configure local
-camera identities, addresses and ROS domains in the external hardware workspace
-with an operator. This code does not ship the lab's device identities.
+## Physical robot setup
 
-| Stage | Entry points |
-| --- | --- |
-| Raw conversion | `hardware_training/convert_npz_to_pkl.py`, `convert_npz_to_pkl_twoarm.py` |
-| Audited preparation | `hardware_training/prepare_coordination_ab.py` (explicit data, original recording and selection roots) |
-| Base training | `hardware_training/train_hardware_singlearm.py`, `train_singlearm_expert_lightaug.py` |
-| ALTER | `hardware_training/train_coordination_ab.py` |
-| FS / full-policy FT | `hardware_training/train_twoarm_standalone.py` |
-| Offline inference | `hardware_training/inference_offline_eval.py`, `inference_offline_eval_coord.py` |
-| ROS inference / execution | `scripts/run_sep14.sh`, `scripts/infer_campaign_sep14.sh` |
-
-Keep the original action units and order: `[x_mm, y_mm, z_mm, roll, pitch, yaw,
-gripper]`. Preserve preprocessing, phase weighting, augmentation, frame
-eligibility and normalization. Offline tests do not reproduce scored physical
-trials or establish permission to release camera recordings.
-
-To run offline executor tests in the hardware environment:
-
-```bash
-PYTHONPATH=. python tests/run_hardware_mocks.py -o addopts=''
-```
-
-This harness installs inert ROS types; it does not start ROS or call a service.
-It checks sequencing and gripper behavior. The Python 3.10 offline profile was
-tested separately from simulation. Actual ROS imports/builds and camera streams
-still need operator-coordinated validation on the hardware machine.
-
-Set `PY` (or `PYTHON_BIN`) and `CHECKPOINT_ROOT` explicitly. The launcher accepts
-`--dry-run` to print a command; direct executor `--dry-run` exercises more of the
-ROS loop and should not be confused with printing only. Selected model folders
-must match the historical layout documented by the recovered hardware artifacts.
-The executor still enables servo mode and the gripper before its confirmation
-prompt. This public port preserves that behavior; any change requires author
-review and separate testing. No robot execution was launched during the port.
+Live operation needs the private ICON_Arm project, ROS 2 Humble, xArm drivers,
+and RealSense camera drivers. Its operator-managed setup is documented in its
+[bootstrap guide](https://github.com/labicon/ICON_Arm/blob/bcd023f2700cdc67a58981dbf965c14d50dec544/BOOTSTRAP.md).
+Hardware machine identities and camera addresses are not part of this release.
+Coordinate any physical setup with an operator; no physical robot execution was
+performed for this release.
