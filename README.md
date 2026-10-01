@@ -11,9 +11,31 @@ base policy using limited collaborative demonstrations and single-agent replay
 distilled from the base policy itself.
 
 **[Paper](https://arxiv.org/abs/2609.32129)** ·
-**[Project website](https://iconlab.negarmehr.com/ALTER/)**
+**[Project website](https://iconlab.negarmehr.com/ALTER/)** ·
+**[Models](https://huggingface.co/Berkeley-ICON-Lab/ALTER-models)** ·
+**[Data](https://huggingface.co/datasets/Berkeley-ICON-Lab/ALTER-data)**
 
 ![ALTER overview: frozen base policy, coordination head, collaborative demonstrations, and distilled replay](docs/pictures/overview.png)
+
+## Code, models, and data
+
+Simulation and hardware research code are available on this repository’s `main`
+branch. Checkpoints and data are public at [ALTER-models](https://huggingface.co/Berkeley-ICON-Lab/ALTER-models)
+and [ALTER-data](https://huggingface.co/datasets/Berkeley-ICON-Lab/ALTER-data).
+Original code/checkpoints use Apache-2.0; original datasets use CC BY 4.0.
+See [LICENSE](LICENSE) and [NOTICE](NOTICE) for source scope. Hardware checkpoints,
+recordings and prepared training caches are available under `hardware/v1/` in the
+same Hub repositories; use the separate [hardware guide](documentation/release/hardware.md)
+and [hardware manifest](release/hardware-manifest.json). Physical operation still requires the
+private external robot-control package.
+
+Start with [installation](documentation/release/installation.md),
+[artifact integrity/downloads](documentation/release/artifacts.md),
+[simulation workflows](documentation/release/simulation.md), and
+[hardware preparation](documentation/release/hardware.md).
+[Licensing review](documentation/release/licensing.md) and
+[Hugging Face publication](documentation/release/huggingface.md) describe the
+release scope and verification. Local smoke tests do not reproduce the paper tables.
 
 ## Website
 
@@ -33,22 +55,3 @@ If you find ALTER useful in your research, please cite:
   url={https://arxiv.org/abs/2609.32129}
 }
 ```
-
-## Simulation code release
-
-The simulation code is available on the public repository’s `main` branch. Simulation checkpoints and data
-are public at [ALTER-models](https://huggingface.co/Berkeley-ICON-Lab/ALTER-models)
-and [ALTER-data](https://huggingface.co/datasets/Berkeley-ICON-Lab/ALTER-data).
-Original code/checkpoints use Apache-2.0; original datasets use CC BY 4.0.
-See [LICENSE](LICENSE) and [NOTICE](NOTICE) for source scope. Hardware checkpoints,
-recordings and prepared training caches are available under `hardware/v1/` in the
-same Hub repositories; use the separate [hardware guide](documentation/release/hardware.md)
-and `release/hardware-manifest.json`. Physical operation still requires the
-private external robot-control package.
-Start with [installation](documentation/release/installation.md),
-[artifact integrity/downloads](documentation/release/artifacts.md),
-[simulation workflows](documentation/release/simulation.md), and
-[hardware preparation](documentation/release/hardware.md).
-[Licensing review](documentation/release/licensing.md) and
-[Hugging Face publication](documentation/release/huggingface.md) describe the
-release scope and verification. Local smoke tests do not reproduce the paper tables.
