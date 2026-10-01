@@ -212,19 +212,20 @@
           <figcaption>Lid replacement</figcaption>
         </figure>
       </div>
-      <figure class="results-figure">
+      <figure class="results-figure hardware-results-figure">
         <div class="media-slot diagram" data-media="hardwareResults" role="img" aria-label="Hardware coordination and combined source success across lower and higher data regimes">
           <div class="placeholder-content"><a href="pictures/hardware-results.png">View the hardware results chart</a></div>
         </div>
         <figcaption>
-          <span class="caption-line">Adaptation budgets pair <strong>30 / 30 or 69 / 68 multi-agent / distilled single-arm demonstrations</strong> for every method. Combined source success pools lid removal, lid replacement, and bird pick-and-place trials.</span>
-          <span class="caption-line">Higher-data results: <a href="static/papers/ALTER.pdf">Table IV</a>. Lower-data results: presentation, “Hardware Results Across Data Regimes.”</span>
+          <p class="hardware-results-takeaway">ALTER leads coordination in the lower-data regime and matches FT-mixed at the higher budget, while retaining <strong>95–98.3% source-task success</strong> across both regimes.</p>
           <span class="caption-links"><a href="static/data/hardware-results.csv">Download data</a> · <a href="pictures/hardware-results.pdf">Figure PDF</a></span>
+          <details class="hardware-results-details">
+            <summary>Evaluation details and sources</summary>
+            <p>Every method uses 30 / 30 or 69 / 68 multi-agent / distilled single-arm demonstrations, with 20 coordination trials and 60 source trials per regime. Combined source success pools lid removal, lid replacement, and bird pick-and-place; the higher-data evaluation uses 20 trials per task.</p>
+            <p>Higher-data results come from <a href="static/papers/ALTER.pdf">Table IV of the paper</a>; lower-data results come from the presentation, “Hardware Results Across Data Regimes.”</p>
+          </details>
         </figcaption>
       </figure>
-      <p class="results-caption">ALTER and FT-mixed each succeed in <strong>18/20 coordination trials</strong>, compared with 13/20 for FS. Across the three source tasks, ALTER succeeds in <strong>59/60 trials</strong>, compared with 47/60 for FT-mixed and 40/60 for FS.</p>
-      <p class="results-caption">With <strong>30 multi-agent and 30 distilled single-arm demonstrations</strong>, ALTER achieves <strong>75% coordination success and 95% combined source success</strong>, compared with 55% and 73.3% for FT-mixed, and 40% and 63.3% for FS.</p>
-      <p class="experiment-note">Each regime evaluates 20 coordination trials and 60 source trials per method. Higher-data source success combines 20 trials each of lid removal, lid replacement, and bird pick-and-place. <a href="static/papers/ALTER.pdf">Table IV</a>.</p>
     </section>
 
     <section class="section container" id="comparisons" aria-labelledby="comparisons-title">
