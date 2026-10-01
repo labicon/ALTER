@@ -111,7 +111,7 @@ def run(args):
     write_json(status_path, dict(stage='preflight', pid=os.getpid(), time=datetime.now().isoformat()))
     torch.set_num_threads(4)
     _train_utils.seed_training(0)
-    device = torch.device('cuda')
+    device = torch.device(args.device)
     mean, std, sigma_data = prepare_manifest(args.manifest, args.output / 'manifest.json',
                                             args.expected_episodes, args.include_singlearm)
     if args.reference_stats is not None:
@@ -196,7 +196,7 @@ def run(args):
                        **domain_losses,
                        seconds=time.monotonic()-started, evaluation_seconds=evaluation_seconds,
                        updates_per_second=step/(time.monotonic()-started-evaluation_seconds),
-                       peak_memory_mb=torch.cuda.max_memory_allocated()/2**20)
+                       peak_memory_mb=torch.cuda.max_memory_allocated()/2**20 if device.type == 'cuda' else 0)
             with (args.output / 'metrics.jsonl').open('a') as stream:
                 stream.write(json.dumps(row) + '\n')
             write_json(status_path, dict(stage='training', pid=os.getpid(), time=datetime.now().isoformat(), **row))
@@ -241,6 +241,7 @@ def main():
     parser.add_argument('--steps', type=int, default=100000)
     parser.add_argument('--batch-size', type=int, default=256)
     parser.add_argument('--workers', type=int, default=6)
+    parser.add_argument('--device', default='cuda', help='Training device, e.g. cuda or cpu')
     parser.add_argument('--save-every', type=int, default=2500)
     parser.add_argument('--lr', type=float, default=2e-4)
     parser.add_argument('--eval-bundle', type=Path)

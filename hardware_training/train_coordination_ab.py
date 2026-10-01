@@ -51,6 +51,8 @@ def main():
     parser.add_argument("--twoarm-only", action="store_true")
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--reference-stats", type=Path, required=True)
+    parser.add_argument("--base-checkpoint", type=Path, help="Override the base checkpoint path recorded in reference statistics")
+    parser.add_argument("--base-stats", type=Path, help="Override the matching base statistics path")
     args = parser.parse_args()
     if args.batch_size % args.microbatch or min(args.steps, args.microbatch, args.save_every) <= 0:
         raise ValueError("Invalid step/batch configuration")
@@ -63,6 +65,12 @@ def main():
     reference = args.reference_stats
     with reference.open("rb") as stream:
         stats = pickle.load(stream)
+    for field, override, option in (("base_model_path", args.base_checkpoint, "--base-checkpoint"),
+                                    ("base_stats_path", args.base_stats, "--base-stats")):
+        selected = override if override is not None else Path(stats[field])
+        if not selected.is_file():
+            raise FileNotFoundError(f"Missing {field}: {selected}; supply {option} with the matching local artifact")
+        stats[field] = str(selected.resolve())
     with Path(stats["base_stats_path"]).open("rb") as stream:
         base_stats = pickle.load(stream)
     if stats.get("frame_offsets", [0]) != [0] or stats["horizon"] != 20:

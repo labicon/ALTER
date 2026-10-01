@@ -3,7 +3,9 @@
 Simulation artifacts are public at [ALTER-models](https://huggingface.co/Berkeley-ICON-Lab/ALTER-models)
 and [ALTER-data](https://huggingface.co/datasets/Berkeley-ICON-Lab/ALTER-data).
 `release/manifest.json` pins immutable Hub revisions and all file checksums.
-Hardware artifacts are deferred.
+Hardware v1 uses a separate [pinned manifest](../../release/hardware-manifest.json)
+and [materialization guide](hardware.md). Keep simulation and hardware downloads
+in separate directories because their root control manifests differ.
 
 The selected simulation files are split into model, pretraining-data,
 adaptation-data, and provenance bundles. They preserve distinct storage
@@ -11,15 +13,17 @@ namespaces, the 400-demonstration base selection, nested 5/10/15-per-mode
 adaptation membership, grouping and order. Do not regenerate selection from
 relocated filenames: the historical selection ranks included absolute paths.
 
-Download selected bundles with:
+Download all four bundles for the materialization command below:
 
 ```bash
 python scripts/download_release.py --manifest release/manifest.json \
-  --bundles simulation-models simulation-adaptation-data simulation-provenance \
+  --bundles simulation-models simulation-pretraining-data \
+  simulation-adaptation-data simulation-provenance \
   --destination /path/to/ALTER-artifacts
 ```
 
-Add `simulation-pretraining-data` for base-policy training. Each bundle must name
+For file inspection only, `--bundles` can select a subset. Materialization currently
+requires all four bundles, including pretraining data. Each bundle must name
 a full 40-character Hub commit. Files are verified with full SHA-256 checksums;
 valid existing files are reused and conflicts are rejected. The destination
 cannot contain symlink path components. `--local-source /path/to/reviewed-bundles`
