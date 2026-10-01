@@ -3,8 +3,10 @@
 **Dayi Dong, Maulik Bhatt, Aayushi Shrivastava, Lasse Peters, Negar Mehr**<br>
 University of California, Berkeley
 
-**ALTER** stands for **A**daptation from **L**imited demonstrations for **T**eam
-coordination with **E**xisting-skill **R**etention. It adapts pretrained diffusion
+**ALTER**: **A**daptation from **L**imited demonstrations for **T**eam
+coordination with **E**xisting-skill **R**etention. 
+
+Our method, ALTER adapts pretrained diffusion
 policies to coordinate with other robots while retaining their original
 independent skills. A trainable residual coordination head corrects a frozen
 base policy using limited collaborative demonstrations and single-agent replay
