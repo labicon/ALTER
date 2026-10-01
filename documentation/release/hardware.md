@@ -58,8 +58,22 @@ Start with the [installation guide](installation.md) to create the hardware
 Python environment. The hardware entry points live in
 `hardware_training/`; use `--help` for each command’s required inputs and options.
 The selected workflows have passed short CPU training checks, but those checks
-do not reproduce the paper success rates. The release includes example prepared
+do not reproduce the paper success rates. The release includes high and low prepared
 cache manifests under `hardware/manifests/`.
+
+For paper-selected runs, follow the matching checkpoint statistics and manifest.
+Full-policy runs use `--include-singlearm`, `--grasp-transition-fraction 0`, and
+`--expected-episodes 69` (or `30` with the low-data manifest), plus matching
+`--reference-stats`. FT-mixed also needs the base checkpoint and statistics as
+`--init-checkpoint` and `--init-stats`; from-scratch omits these. The exact
+historical FT-mixed base statistics file is unavailable, so the verified substitute
+pair supports functional checks only and is not byte-identical to that original.
+Do not treat historical `provenance://` references as downloadable file paths.
+
+Hardware action rows use `[x_mm, y_mm, z_mm, roll, pitch, yaw, gripper]`. Preserve
+the released order, units, preprocessing, and normalization when adapting offline
+inference or training code. Use only trusted artifacts verified against the
+reviewed hardware manifest.
 
 The released model/data cards and verification details are in
 [Hugging Face publication](huggingface.md#hardware-v1-verification). Offline
@@ -72,4 +86,7 @@ and RealSense camera drivers. Its operator-managed setup is documented in its
 [bootstrap guide](https://github.com/labicon/ICON_Arm/blob/bcd023f2700cdc67a58981dbf965c14d50dec544/BOOTSTRAP.md).
 Hardware machine identities and camera addresses are not part of this release.
 Coordinate any physical setup with an operator; no physical robot execution was
-performed for this release.
+performed for this release. The ROS executor enables servo mode and the gripper
+before its confirmation prompt; review and coordinate its behavior with the hardware
+operator before use. `tests/run_hardware_mocks.py` checks executor logic with inert
+ROS types only: it does not start ROS, connect to a robot, or validate a real trial.

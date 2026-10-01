@@ -27,5 +27,10 @@ creates a local runtime tree with usable paths. It needs all four bundles.
 Only materialize files from the reviewed release manifest.
 Keep downloads and generated files outside Git.
 
+For reproducing selected paper runs, use [`workflow-artifacts.json`](workflow-artifacts.json)
+to match runs with their files. Keep each model paired with its normalization
+statistics. Do not regenerate demo selections from relocated filenames: historical
+selection ranks included absolute paths.
+
 See [simulation workflows](simulation.md) for what to do with the prepared files.
 For the separately versioned hardware downloads, use the [hardware guide](hardware.md).
