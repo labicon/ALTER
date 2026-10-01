@@ -1,0 +1,29 @@
+{
+  "schema": "alter.hardware-publication.v1",
+  "repositories": {
+    "model": {
+      "repo_id": "Berkeley-ICON-Lab/ALTER-models",
+      "artifact_revision": "76b658eff0a508fd397a8a119d92e139520cb90c",
+      "files_verified": 227,
+      "preexisting_files_unchanged": 77,
+      "public": true,
+      "gated": false
+    },
+    "dataset": {
+      "repo_id": "Berkeley-ICON-Lab/ALTER-data",
+      "artifact_revision": "00ad3aff271da0a0ad212ef08a5f737d8e9ffc94",
+      "files_verified": 913,
+      "preexisting_files_unchanged": 645,
+      "public": true,
+      "gated": false
+    }
+  },
+  "artifact_bytes": 69754642776,
+  "payload_files": 1139,
+  "payload_and_control_files": 1140,
+  "anonymous_inventory_verified": true,
+  "full_paper_reproduction_required": false,
+  "physical_robot_execution_performed": false,
+  "existing_simulation_artifacts_unchanged": true,
+  "license_files_changed": false
+}

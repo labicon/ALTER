@@ -1,6 +1,6 @@
-# ALTER hardware models — staging draft
+# ALTER hardware models
 
-Seven hardware model/statistics pairs are prepared: the 100,000-step single-arm
+Seven hardware model/statistics pairs are included: the 100,000-step single-arm
 base and H69, S69, FT_mixed, H30, S30, and FT-mixed-30 at 25,000 steps. The author
 confirmed the six 25k checkpoints were used for the paper's hardware results.
 H69/H30 use a frozen base with a coordination head; S69/S30 train a full policy
@@ -10,7 +10,7 @@ The model bundle contains 226 files (819,478,346 bytes), including portable
 statistics, high/low training manifests, record metadata, model/data catalogs,
 and two saved camera frames for offline inference. All checkpoint bytes remain
 unchanged. The accompanying export receipts record original and portable hashes.
-The camera frames retain their own dataset release terms when approved.
+The saved camera frames support offline inference validation.
 
 Path-bearing metadata uses `artifact://` references for included artifacts and
 `provenance://sha256/` identifiers for historical references not distributed.
@@ -30,5 +30,8 @@ Short training checks use recovered original caches; they do not rerun physical
 trials or estimate new hardware success rates. Physical operation depends on the
 private, separately maintained ICON_Arm project, which is not bundled.
 
-Status: local staging only. Hub revisions and hardware model/data licenses must
-be finalized before publication. The existing simulation release remains unchanged.
+Published as hardware v1. See [hardware guide](../documentation/release/hardware.md) and [hardware-manifest.json](hardware-manifest.json)
+for downloads pinned to immutable artifact revisions. Existing repository license
+files are unchanged by this addition. The simulation artifacts remain unchanged.
+
+Authors: Dayi Dong, Maulik Bhatt, Aayushi Shrivastava, Lasse Peters, Negar Mehr.

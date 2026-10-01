@@ -40,8 +40,11 @@ The simulation code is available on the public repository’s `main` branch. Sim
 are public at [ALTER-models](https://huggingface.co/Berkeley-ICON-Lab/ALTER-models)
 and [ALTER-data](https://huggingface.co/datasets/Berkeley-ICON-Lab/ALTER-data).
 Original code/checkpoints use Apache-2.0; original datasets use CC BY 4.0.
-See [LICENSE](LICENSE) and [NOTICE](NOTICE) for source scope. Hardware artifacts
-are deferred.
+See [LICENSE](LICENSE) and [NOTICE](NOTICE) for source scope. Hardware checkpoints,
+recordings and prepared training caches are available under `hardware/v1/` in the
+same Hub repositories; use the separate [hardware guide](documentation/release/hardware.md)
+and `release/hardware-manifest.json`. Physical operation still requires the
+private external robot-control package.
 Start with [installation](documentation/release/installation.md),
 [artifact integrity/downloads](documentation/release/artifacts.md),
 [simulation workflows](documentation/release/simulation.md), and

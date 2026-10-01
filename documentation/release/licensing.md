@@ -17,7 +17,8 @@ comprehensive legal clearance of upstream material.
 | Original simulation checkpoints | Apache-2.0. Selected ResNet18 encoder weights are included; the released encoder implementation constructs torchvision ResNet18 with weights=None. No separate DINO weight files are included. |
 | Original simulation demonstrations/replay and records | CC BY 4.0. Simulator software and standalone scene/robot asset packages are installed separately; their terms are not replaced. |
 | Website/paper/media | Retained unchanged; not relicensed by the code or artifact declarations. |
-| ICON_Arm and hardware | Deferred. The inspected package has a placeholder license; no hardware artifacts are published here. |
+| Hardware artifacts | Published separately under `hardware/v1/` in the existing model/data repositories. This addition leaves existing repository license files unchanged. |
+| ICON_Arm | Private external dependency, not bundled or relicensed by ALTER; its inspected package has a placeholder license. |
 | External dependencies | Installed separately, not bundled as an environment. Preserve their applicable notices and terms. |
 
 The [installed dependency metadata inventory](../../release/dependency-license-inventory.json)

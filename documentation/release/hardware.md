@@ -4,8 +4,9 @@ The hardware profile covers current-frame inference and training. The recovered
 local archive contains the original 100k base and six 25k models (H69, S69,
 FT_mixed, H30, S30, FT-mixed-30), plus their statistics and selected source data.
 On 2026-09-30, the author confirmed that these six 25k checkpoints were used for
-the paper hardware results. These hardware artifacts have not been published to
-the Hub. Real robot validation of the public port remains pending; offline tests
+the paper hardware results. These hardware artifacts are published under `hardware/v1/` in the
+[model](https://huggingface.co/Berkeley-ICON-Lab/ALTER-models/tree/main/hardware/v1) and
+[data](https://huggingface.co/datasets/Berkeley-ICON-Lab/ALTER-data/tree/main/hardware/v1) repositories. Real robot validation of the public port remains pending; offline tests
 do not establish hardware success rates.
 
 ## Recovered artifact checks
@@ -57,10 +58,10 @@ from-scratch check was too short to satisfy the existing encoder-update assertio
 because of zero-initialized decoder layers; the assertion was retained.
 These checks establish functional loading and training, not reproduced success rates.
 
-The local manifests and archive metadata retain historical private paths; they
-are validation inputs, not sanitized public exports. Prepared caches restore the
-selected training inputs without reconstructing missing raw recordings. Hardware
-artifact download instructions will be added when sanitized bundles are published.
+Private originals retain historical paths. Public metadata uses portable artifact
+references with original/export checksums; scientific fields are preserved. Prepared caches restore the
+selected training inputs without reconstructing missing raw recordings. The published
+bundles contain these exact prepared inputs and independently sanitized metadata.
 
 For an existing verified local archive, use a fresh output directory and explicit
 artifact paths. This one-step CPU check exercises coordination training with the
@@ -87,18 +88,26 @@ manifest), and the matching `--reference-stats`. FT-mixed additionally requires
 statistics. From-scratch runs omit these initialization options. Use the NumPy
 compatibility wrapper above when loading the recovered statistics under NumPy 1.26.
 
-## Portable bundle staging
+## Download and materialize hardware v1
 
-Hardware bundles are prepared locally; they are not yet downloadable from the
-Hub. The existing downloader accepts their staging manifest with `--local-source`.
-Remote downloads remain disabled until immutable Hub revisions are recorded.
+The [hardware manifest](../../release/hardware-manifest.json) pins immutable Hub
+revisions, every payload checksum and the export receipts. Use a separate download
+directory from the simulation artifacts. Start with the model-only bundle:
 
-For a verified local bundle root, materialize model metadata without downloading
-training data:
+```bash
+python scripts/download_release.py --manifest release/hardware-manifest.json \
+  --bundles hardware-models --destination /path/to/ALTER-hardware-artifacts
+```
+
+Add `hardware-training-data` for adaptation training caches, and
+`hardware-demonstrations-data` for selected source demonstrations and replay.
+The downloader reuses valid files and refuses conflicting ones.
+
+Materialize model metadata without requiring training data:
 
 ```bash
 python scripts/materialize_hardware_release.py \
-  --bundle-root /path/to/downloaded-hardware-bundles \
+  --bundle-root /path/to/ALTER-hardware-artifacts \
   --output "$PWD/public-validation/hardware-local" \
   --bundles hardware-models
 python scripts/validate_hardware_models.py \
@@ -124,7 +133,7 @@ to that historical file.
 
 The [model card](../../release/hardware-model-card-draft.md) and
 [data card](../../release/hardware-dataset-card-draft.md) describe contents and
-limitations. Hardware license scope and publication approval remain pending.
+limitations. Existing repository license files are unchanged by this addition.
 
 ## External hardware setup
 

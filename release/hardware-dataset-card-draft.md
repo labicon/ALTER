@@ -1,6 +1,6 @@
-# ALTER hardware data — staging draft
+# ALTER hardware data
 
-Two independently selectable data bundles are prepared:
+Two independently selectable data bundles are included:
 
 | Bundle | Files | Bytes | Contents |
 | --- | ---: | ---: | --- |
@@ -28,8 +28,10 @@ protocol is preserved rather than reinterpreted as a temporal dataset.
 Original data/cache bytes are unchanged; export receipts and checksum manifests
 record their identities. Path-bearing metadata is sanitized in independent copies.
 Representative inspection of 59 frames showed robot workspaces and task objects,
-with no obvious faces or private text in those samples. This was not an exhaustive
-review of every frame and does not establish release permission for recordings.
+with no obvious faces or private text in those samples. This was a representative review, not an exhaustive inspection of every frame.
 
-Status: local staging only. Hardware data release terms and publication approval
-remain to be finalized. Existing public simulation data are unchanged.
+Published as hardware v1. See [hardware guide](../documentation/release/hardware.md) and [hardware-manifest.json](hardware-manifest.json)
+for downloads pinned to immutable artifact revisions. Existing repository license
+files are unchanged by this addition. The simulation artifacts remain unchanged.
+
+Authors: Dayi Dong, Maulik Bhatt, Aayushi Shrivastava, Lasse Peters, Negar Mehr.

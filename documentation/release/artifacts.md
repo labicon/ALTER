@@ -3,7 +3,9 @@
 Simulation artifacts are public at [ALTER-models](https://huggingface.co/Berkeley-ICON-Lab/ALTER-models)
 and [ALTER-data](https://huggingface.co/datasets/Berkeley-ICON-Lab/ALTER-data).
 `release/manifest.json` pins immutable Hub revisions and all file checksums.
-Hardware artifacts are deferred.
+Hardware v1 uses a separate [pinned manifest](../../release/hardware-manifest.json)
+and [materialization guide](hardware.md). Keep simulation and hardware downloads
+in separate directories because their root control manifests differ.
 
 The selected simulation files are split into model, pretraining-data,
 adaptation-data, and provenance bundles. They preserve distinct storage
