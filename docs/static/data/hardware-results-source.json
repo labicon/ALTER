@@ -1,0 +1,17 @@
+{
+  "source_document": "static/papers/ALTER.pdf",
+  "sha256": "0805c77346548ce51e830eb814550b0675c46f3a423a42359b274a18449a8c41",
+  "pdf_page": 7,
+  "tables": ["IV: hardware coordination and source success"],
+  "dataset": "hardware-results.csv",
+  "lower_data_source": "Presentation1_revised.pptx, slide 4; presentation_assets_v2/hardware_results.pdf",
+  "units": "successful trials / total trials",
+  "notes": [
+    "Combined source success pools three equally sized evaluations: lid removal, lid replacement, and bird pick-place (20 trials per task).",
+    "Adaptation budgets exclude the 332 single-arm demonstrations used for base-policy pretraining.",
+    "No across-seed uncertainty estimates are reported or plotted.",
+    "The unadapted base policy is not plotted as an adapted method.",
+    "Lower-data results are transcribed from Presentation1.pptx slide 4 and cross-checked against the revised presentation figure. Only pooled source counts are available for this regime; per-task cells are blank.",
+    "The original slide labels FS lower-data source retention as 38/60 = 53%. The count is preserved and its percentage corrected to 63.3%, consistent with the revised presentation."
+  ]
+}

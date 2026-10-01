@@ -1,0 +1,7 @@
+multi_agent_demos,distilled_source_demos,method,coordination_successes,coordination_trials,combined_source_successes,combined_source_trials,lid_removal_successes,lid_replacement_successes,bird_pick_place_successes,source_trials_per_task
+30,30,ALTER,15,20,57,60,,,,
+30,30,FT-mixed,11,20,44,60,,,,
+30,30,FS,8,20,38,60,,,,
+69,68,ALTER,18,20,59,60,19,20,20,20
+69,68,FT-mixed,18,20,47,60,11,19,17,20
+69,68,FS,13,20,40,60,9,19,12,20

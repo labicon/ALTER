@@ -31,6 +31,12 @@ window.ALTER_MEDIA = {
     "alt": "Coordination and combined source success from Tables I\u2013II. Budgets for ALTER, FS, and FT-mixed are 20/20, 40/40, and 60/60 multi-agent/distilled single-arm demonstrations; FT-multi uses 20/0, 40/0, and 60/0. ALTER coordination success is 35, 71.5, and 87 percent; its combined source success is 97, 97.5, and 97 percent.",
     "mobileSrc": "pictures/results-mobile.svg"
   },
+  "hardwareResults": {
+    "type": "image",
+    "src": "pictures/hardware-results.svg",
+    "mobileSrc": "pictures/hardware-results-mobile.svg",
+    "alt": "Hardware results at 30 / 30 and 69 / 68 multi-agent / distilled single-arm demonstrations. Coordination success at the lower and higher budgets: ALTER 75% and 90%, FT-mixed 55% and 90%, FS 40% and 65%. Combined source success: ALTER 95% and 98.3%, FT-mixed 73.3% and 78.3%, FS 63.3% and 66.7%."
+  },
   "simulation": {
     "type": "video",
     "src": "videos/web/simulation-coordination-01.mp4",
